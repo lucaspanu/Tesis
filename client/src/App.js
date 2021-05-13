@@ -16,6 +16,7 @@ import Doctorado from "./Pages/Inicio/Doctorado";
 import Cursos from "./Pages/Inicio/Cursos";
 import Diplomaturas from "./Pages/Inicio/Diplomaturas";
 import RegisterForm from "./Components/User/RegisterForm";
+import ForgetPassword from "./Components/User/ForgetPassword";
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
           {/* Login */}
           <Route exact path="/login" component={LoginForm} />
           <Route exact path="/registrarse" component={RegisterForm} />
+          <Route exact path="/password" component={ForgetPassword} />
           {/* --------------------- */}
           {/* Pagina no encontrada */}
           <Route component={NoMatch} />

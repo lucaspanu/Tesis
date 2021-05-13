@@ -34,7 +34,6 @@ if (process.env.NODE_ENV === "development") {
 // Load routes
 const authRouter = require("./routes/auth.route");
 const userRouter = require("./routes/user.route");
-const stripeRouter = require("./routes/stripe.route");
 const adminRouter = require("./routes/admin.route");
 const turnosRouter = require("./routes/turno.route");
 
@@ -43,8 +42,6 @@ app.use("/api", authRouter);
 app.use("/api", userRouter);
 app.use("/api", adminRouter);
 app.use("/api", turnosRouter);
-//stripe route
-app.use("/api", stripeRouter);
 
 app.use((req, res) => {
   res.status(404).json({

@@ -14,61 +14,42 @@ import {
   Segment,
 } from "semantic-ui-react";
 
-const LoginForm = ({ history }) => {
-  //handle changes por imputs
+const ForgetPassword = ({ history }) => {
   const [formData, setFormData] = useState({
     email: "",
-    password: "",
   });
-  const { email, password } = formData;
-
+  const { email } = formData;
   const handleChange = (text) => (e) => {
     setFormData({ ...formData, [text]: e.target.value });
   };
-
-  //Submit data to the backend
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (email && password) {
+    if (email) {
       setFormData({ ...formData });
       axios
-        .post(`${process.env.REACT_APP_API_URL}/login`, {
+        .put(`${process.env.REACT_APP_API_URL}/password/forget`, {
           email,
-          password: password,
         })
         .then((res) => {
-          authenticate(res, () => {
-            setFormData({
-              ...formData,
-              email: "",
-              password: "",
-            });
-            toast.success(`Hey ${res.data.displayName}, Bienvenido!`);
-            isAuth() && isAuth().role === "admin"
-              ? history.push("/admin")
-              : history.push("/private");
+          setFormData({
+            ...formData,
+            email: "",
           });
+          toast.success(`Por favor revisa tu correo`);
         })
         .catch((err) => {
-          if (err.response == null)
-            return toast.error("No se pudo conectar a la base de datos");
-
-          if (err.response.status == 401)
-            return toast.error("Correo o contraseña incorrectos");
-
           console.log(err.response);
-          toast.error(err.response.data.errors);
+          toast.error(err.response.data.error);
         });
     } else {
-      toast.error("Por favor llenar todos los campos");
+      toast.error("Ingresa un email valido");
     }
   };
-
   return (
     <div>
       {/* Si esta logeado que lo redirija */}
       {/* {isAuth() && isAuth().role === "admin" ? <Redirect to="/admin" /> : null} */}
-      {isAuth() ? <Redirect to="/private" /> : null}
+      {isAuth() ? <Redirect to="/" /> : null}
       <ToastContainer />
       <Grid
         textAlign="center"
@@ -77,7 +58,7 @@ const LoginForm = ({ history }) => {
       >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" color="teal" textAlign="center">
-            INICIAR SESIÓN
+            Recuperar contraseña
           </Header>
           <Form size="large" onSubmit={handleSubmit}>
             <Segment stacked>
@@ -91,30 +72,14 @@ const LoginForm = ({ history }) => {
                 placeholder="E-mail address"
                 onChange={handleChange("email")}
               />
-              <Form.Input
-                fluid
-                icon="lock"
-                iconPosition="left"
-                placeholder="Password"
-                value={password}
-                type="password"
-                label="Contraseña"
-                onChange={handleChange("password")}
-              />
 
               <Button color="teal" fluid size="large">
-                Ingresar
+                Enviar
               </Button>
-
-              <Divider />
-
-              <Link to="/password">¿Olvidaste la contraseña?</Link>
             </Segment>
           </Form>
-          <Message>
-            No tienes una cuenta ? <Link to="/registrarse">Registrarse</Link>
-          </Message>
-          <Button as={Link} to="/" animated floated="left">
+          <Divider hidden />
+          <Button as={Link} to="/login" animated floated="left">
             <Button.Content visible>Volver</Button.Content>
             <Button.Content floated="left" hidden>
               <Icon name="left chevron" />
@@ -126,4 +91,4 @@ const LoginForm = ({ history }) => {
   );
 };
 
-export default LoginForm;
+export default ForgetPassword;

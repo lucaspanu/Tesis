@@ -15,14 +15,13 @@ import {
 
 const RegisterForm = ({ history }) => {
   const [formData, setFormData] = useState({
-    username: "",
-    displayName: "",
+    name: "",
     email: "",
     password1: "",
     password2: "",
   });
 
-  const { username, displayName, email, password1, password2 } = formData;
+  const { name, email, password1, password2, textChange } = formData;
   //Handle change from inputs
   const handleChange = (text) => (e) => {
     setFormData({ ...formData, [text]: e.target.value });
@@ -31,45 +30,40 @@ const RegisterForm = ({ history }) => {
   //submit data to backend
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (username && displayName && email && password1) {
+    if (name && email && password1) {
       if (password1 === password2) {
         setFormData({ ...formData });
         axios
-          .post(`${process.env.REACT_APP_API_URL}/user/register`, {
-            username,
-            displayName,
+          .post(`${process.env.REACT_APP_API_URL}/register`, {
+            name,
             email,
             password: password1,
           })
           .then((res) => {
-            authenticate(res, () => {
-              setFormData({
-                ...formData,
-                username: "",
-                displayName: "",
-                email: "",
-                password1: "",
-                password2: "",
-              });
-            });
-            toast.success(res.data.message);
-            isAuth() && isAuth().role === "admin"
-              ? history.push("/admin")
-              : history.push("/private");
-          })
-          .catch((err) => {
+            // authenticate(res, () => {
             setFormData({
               ...formData,
-              username: "",
-              displayName: "",
+              name: "",
               email: "",
               password1: "",
               password2: "",
             });
-
+            // });
+            toast.success(res.data.message);
+            // isAuth() && isAuth().role === "admin"
+            //   ? history.push("/admin")
+            //   : history.push("/private");
+          })
+          .catch((err) => {
+            setFormData({
+              ...formData,
+              name: "",
+              email: "",
+              password1: "",
+              password2: "",
+            });
             console.log(err.response);
             toast.error(err.response.data.errors);
-            toast.error(err.response.data.errors.Password[0]);
           });
       } else {
         toast.error("Las contraseñas no son iguales");
@@ -97,28 +91,20 @@ const RegisterForm = ({ history }) => {
             <Segment stacked>
               <Form.Input
                 fluid
-                icon="user"
-                iconPosition="left"
-                label="Usuario"
-                onChange={handleChange("username")}
-                value={username}
-              />
-              <Form.Input
-                fluid
-                icon="user outline"
-                iconPosition="left"
-                label="Nombre"
-                onChange={handleChange("displayName")}
-                value={displayName}
-              />
-              <Form.Input
-                fluid
                 icon="mail"
                 type="email"
                 iconPosition="left"
                 label="Email"
                 onChange={handleChange("email")}
                 value={email}
+              />
+              <Form.Input
+                fluid
+                icon="user"
+                iconPosition="left"
+                label="Nombre"
+                onChange={handleChange("name")}
+                value={name}
               />
               <Form.Input
                 fluid
