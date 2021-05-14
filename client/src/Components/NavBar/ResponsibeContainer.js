@@ -99,16 +99,11 @@ class DesktopContainer extends Component {
                 {isAuth() ? (
                   <Fragment>
                     <Menu.Item position="right">
-                      <Image
-                        avatar
-                        spaced="right"
-                        src={isAuth.image || ImagenUser}
-                      />
-                      <Dropdown pointing="top left" text={isAuth()}>
+                      <Dropdown pointing="top left" text={isAuth().name}>
                         <Dropdown.Menu>
                           <Dropdown.Item
                             as={Link}
-                            to={`/profile/username`}
+                            to={`/private`}
                             text="My profile"
                             icon="user"
                           />
@@ -252,7 +247,7 @@ class MobileContainer extends Component {
                           <Dropdown.Menu>
                             <Dropdown.Item
                               as={Link}
-                              to={`/profile/username`}
+                              to={`/private`}
                               text="My profile"
                               icon="user"
                             />

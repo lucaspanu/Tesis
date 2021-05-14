@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import { authenticate, isAuth } from "../../helpers/auth";
+import { isAuth } from "../../helpers/auth";
 import axios from "axios";
 import {
   Button,
@@ -10,7 +10,6 @@ import {
   Grid,
   Header,
   Icon,
-  Message,
   Segment,
 } from "semantic-ui-react";
 

@@ -76,6 +76,7 @@ const RegisterForm = ({ history }) => {
   return (
     <div>
       {/* Si esta logeado que lo redirija */}
+      {isAuth() && isAuth().role === "admin" ? <Redirect to="/admin" /> : null}
       {isAuth() ? <Redirect to="/private" /> : null}
       <ToastContainer />
       <Grid

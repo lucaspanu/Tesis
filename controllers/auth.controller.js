@@ -263,7 +263,7 @@ exports.forgotPasswordController = (req, res) => {
       (err, user) => {
         if (err || !user) {
           return res.status(400).json({
-            error: "User with that email does not exist",
+            error: "No exites un usuario asociado a ese correo",
           });
         }
 
@@ -283,12 +283,12 @@ exports.forgotPasswordController = (req, res) => {
         const emailData = {
           from: process.env.EMAIL_FROM,
           to: email,
-          subject: `Password Reset link`,
+          subject: `Restablecer su Contraseña`,
           html: `
-                    <h1>Please use the following link to reset your password</h1>
-                    <p>${process.env.CLIENT_URL}/users/password/reset/${token}</p>
+                    <h1>Use el siguiente link para restablecer su Contraseña</h1>
+                    <p>${process.env.CLIENT_URL}/password/reset/${token}</p>
                     <hr />
-                    <p>This email may contain sensetive information</p>
+                    <p>Este correo puede conterner informacion sensible</p>
                     <p>${process.env.CLIENT_URL}</p>
                 `,
         };
@@ -310,7 +310,7 @@ exports.forgotPasswordController = (req, res) => {
                 .then((sent) => {
                   // console.log('SIGNUP EMAIL SENT', sent)
                   return res.json({
-                    message: `Email has been sent to ${email}. Follow the instruction to activate your account`,
+                    message: `Un correo a sido enviado ${email}. Sigue las instrucciones `,
                   });
                 })
                 .catch((err) => {
@@ -370,11 +370,11 @@ exports.resetPasswordController = (req, res) => {
               user.save((err, result) => {
                 if (err) {
                   return res.status(400).json({
-                    error: "Error resetting user password",
+                    error: "Error restableciendo su contraseña",
                   });
                 }
                 res.json({
-                  message: `Great! Now you can login with your new password`,
+                  message: `Te puedes loguear con tu nueva contraseña`,
                 });
               });
             }

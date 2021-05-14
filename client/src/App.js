@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import LoginForm from "./Components/User/LoginForm";
 
 //Paguinas
 import Home from "./Pages/Inicio/Home";
@@ -15,8 +14,15 @@ import EspeciaProcesal from "./Pages/Inicio/Especializaciones/EspeciaProcesal";
 import Doctorado from "./Pages/Inicio/Doctorado";
 import Cursos from "./Pages/Inicio/Cursos";
 import Diplomaturas from "./Pages/Inicio/Diplomaturas";
-import RegisterForm from "./Components/User/RegisterForm";
-import ForgetPassword from "./Components/User/ForgetPassword";
+import LoginForm from "./Components/Login/LoginForm";
+import RegisterForm from "./Components/Login/RegisterForm";
+import ForgetPassword from "./Components/Login/ForgetPassword";
+import ResetPassword from "./Components/Login/ResetPassword";
+
+//Rutas privadas
+import PrivateRoute from "./Routes/PrivateRoute";
+import AdminRoute from "./Routes/AdminRoute";
+import Dashboard from "./Pages/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -61,6 +67,13 @@ function App() {
           <Route exact path="/login" component={LoginForm} />
           <Route exact path="/registrarse" component={RegisterForm} />
           <Route exact path="/password" component={ForgetPassword} />
+          <Route
+            exact
+            path="/password/reset/:token"
+            component={ResetPassword}
+          />
+          {/* Dashboard */}
+          <PrivateRoute path="/private" exact component={Dashboard} />
           {/* --------------------- */}
           {/* Pagina no encontrada */}
           <Route component={NoMatch} />
