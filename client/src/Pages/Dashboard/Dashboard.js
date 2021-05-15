@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import { isAuth, signout } from "../../helpers/auth";
 import {
   Button,
   Card,
@@ -12,6 +13,7 @@ import {
   Icon,
   Image,
   Input,
+  Label,
   Menu,
   Progress,
   Segment,
@@ -20,9 +22,12 @@ import {
   Table,
 } from "semantic-ui-react";
 import "./Dashboard.css";
+import DashboardAdmin from "./Administrador/DashboardAdmin";
+import DashboardUser from "./Usuario/DashboardUser";
+import AddCursos from "./Administrador/AddCursos";
 
 function Dashboard() {
-  const [visible, setVisible] = React.useState(true);
+  const [visible, setVisible] = React.useState(false);
   return (
     <body>
       {/* Menu lateral */}
@@ -45,61 +50,108 @@ function Dashboard() {
                 Dashboard
               </div>
             </Menu.Item>
+            <Menu.Item as={Link} to="#">
+              <div>
+                <Icon name="user circle" />
+                Perfil
+              </div>
+            </Menu.Item>
           </Menu.Menu>
         </Menu.Item>
 
         <Menu.Item>
-          <Menu.Header>Administration</Menu.Header>
+          <Menu.Header>Administrativo</Menu.Header>
 
           <Menu.Menu>
-            <Menu.Item as={Link} to="#">
+            {/* <Menu.Item as={Link} to="#">
               <div>
                 <Icon name="cogs " />
                 Settings
               </div>
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Item as={Link} to="#">
               <div>
-                <Icon name="user" />
+                <Icon name="users" />
                 Usuarios
               </div>
             </Menu.Item>
+            <Menu.Item as={Link} to="#">
+              <div>
+                <Icon name="user plus" />
+                Nuevo Usuario
+              </div>
+            </Menu.Item>
+            <Menu.Item as={Link} to="#">
+              <div>
+                <Icon name="plus" />
+                Cursos
+              </div>
+            </Menu.Item>
+            <Menu.Item as={Link} to="#">
+              <div>
+                <Icon name="plus" />
+                Diplomaturas
+              </div>
+            </Menu.Item>
+            <Menu.Item as={Link} to="#">
+              <div>
+                <Icon name="signup" />
+                Notas
+              </div>
+            </Menu.Item>
+            <Menu.Item as={Link} to="#">
+              <div>
+                <Icon name="signup" />
+                Cuotas
+              </div>
+            </Menu.Item>
           </Menu.Menu>
         </Menu.Item>
 
-        <Menu.Item as={Link} to="#">
-          <div>
-            <Icon name="chart line" />
-            Charts
-          </div>
-        </Menu.Item>
-
-        <Menu.Item as={Link} to="#">
-          <div>
-            <Icon name="lightbulb" />
-            Apps
-          </div>
-        </Menu.Item>
-
         <Menu.Item>
-          <Menu.Header>Others</Menu.Header>
+          <Menu.Header>Inscripciones</Menu.Header>
           <Menu.Menu>
             <Menu.Item as={Link} to="#">
               <div>
-                <Icon name="envelope" />
-                Messages
+                <Icon name="book" />
+                Cursos
               </div>
             </Menu.Item>
             <Menu.Item as={Link} to="#">
               <div>
-                <Icon name="calendar alternate" />
-                Calendar
+                <Icon name="book" flipped="horizontally" />
+                Diplomaturas
               </div>
             </Menu.Item>
           </Menu.Menu>
         </Menu.Item>
 
+        <Menu.Item as={Link} to="#">
+          <div>
+            <Icon name="inbox" />
+            Notificaciones
+          </div>
+        </Menu.Item>
+
         <Menu.Item>
+          <Menu.Header>Contacto</Menu.Header>
+          <Menu.Menu>
+            <Menu.Item as={Link} to="#">
+              <div>
+                <Icon name="info circle" />
+                Informacion
+              </div>
+            </Menu.Item>
+            <Menu.Item as={Link} to="#">
+              <div>
+                <Icon name="facebook f" />
+                Facebook
+              </div>
+            </Menu.Item>
+          </Menu.Menu>
+        </Menu.Item>
+
+        {/* <Menu.Item>
           <Form action="#">
             <Input size="small" icon="search" placeholder="Search..." />
           </Form>
@@ -112,7 +164,7 @@ function Dashboard() {
           <Progress color="teal" inverted percent={76} size="tiny">
             Disk Usage
           </Progress>
-        </Segment>
+        </Segment> */}
       </Sidebar>
       {/* Menu lateral */}
 
@@ -130,36 +182,40 @@ function Dashboard() {
           </Menu.Item>
         </Menu.Menu>
         <Menu.Menu position="right">
-          <Menu.Item icon="bell" as={Link} to="#" />
+          <Menu.Item as={Link} to="#">
+            <Icon name="bell" />
+          </Menu.Item>
           <Dropdown icon="user" pointing className="link item">
             <Dropdown.Menu>
-              <Dropdown.Header>Categories</Dropdown.Header>
-              <Dropdown.Item>
-                <Dropdown text="Clothing">
-                  <Dropdown.Menu>
-                    <Dropdown.Header>Mens</Dropdown.Header>
-                    <Dropdown.Item>Shirts</Dropdown.Item>
-                    <Dropdown.Item>Pants</Dropdown.Item>
-                    <Dropdown.Item>Jeans</Dropdown.Item>
-                    <Dropdown.Item>Shoes</Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Header>Womens</Dropdown.Header>
-                    <Dropdown.Item>Dresses</Dropdown.Item>
-                    <Dropdown.Item>Shoes</Dropdown.Item>
-                    <Dropdown.Item>Bags</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </Dropdown.Item>
-              <Dropdown.Item>Home Goods</Dropdown.Item>
-              <Menu.Item as={Link} to="#">
-                <div>
-                  <Icon name="calendar alternate" />
-                  Calendar
-                </div>
-              </Menu.Item>
+              <Dropdown.Header>{isAuth().name}</Dropdown.Header>
+              <Dropdown.Item
+                as={Link}
+                to={`/perfil`}
+                text="Perfil"
+                icon="user"
+              />
+              <Dropdown.Item
+                as={Link}
+                to={`/private`}
+                text=" Dashboard"
+                icon="tachometer alternate"
+              />
               <Dropdown.Divider />
-              <Dropdown.Item>Configuracion</Dropdown.Item>
-              <Dropdown.Item>Salir</Dropdown.Item>
+              <Dropdown.Item
+                as={Link}
+                to={`/private`}
+                text="Configuracion"
+                icon="cog"
+              />
+              <Dropdown.Item
+                onClick={() => {
+                  signout(() => {});
+                }}
+                text="Salir"
+                icon="power"
+                as={Link}
+                to="/"
+              />
             </Dropdown.Menu>
           </Dropdown>
         </Menu.Menu>
@@ -168,182 +224,16 @@ function Dashboard() {
 
       <Sidebar.Pusher>
         <div className="main-content">
-          <Grid stackable padded>
-            <Grid.Column computer="4" tablet="8" mobile="16">
-              <Card fluid>
-                <Card.Content>
-                  <Header floated="right" color="red">
-                    <Icon name="shopping cart" />
-                  </Header>
-                  <Card.Header>
-                    <Header color="red">3453</Header>
-                  </Card.Header>
-                  <Card.Meta>Orders</Card.Meta>
-                  <Card.Description>
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit cum
-                    augue varius, litora netus in et per dictumst eu auctor
-                    consequat.
-                  </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                  <Button fluid color="red">
-                    More Info
-                  </Button>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-            {/* 2 */}
-            <Grid.Column computer="4" tablet="8" mobile="16">
-              <Card fluid>
-                <Card.Content>
-                  <Header floated="right" color="red">
-                    <Icon name="shopping cart" />
-                  </Header>
-                  <Card.Header>
-                    <Header color="red">3453</Header>
-                  </Card.Header>
-                  <Card.Meta>Orders</Card.Meta>
-                  <Card.Description>
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit cum
-                    augue varius, litora netus in et per dictumst eu auctor
-                    consequat.
-                  </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                  <Button fluid color="red">
-                    More Info
-                  </Button>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-            {/* 3 */}
-            <Grid.Column computer="4" tablet="8" mobile="16">
-              <Card fluid>
-                <Card.Content>
-                  <Header floated="right" color="red">
-                    <Icon name="shopping cart" />
-                  </Header>
-                  <Card.Header>
-                    <Header color="red">3453</Header>
-                  </Card.Header>
-                  <Card.Meta>Orders</Card.Meta>
-                  <Card.Description>
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit cum
-                    augue varius, litora netus in et per dictumst eu auctor
-                    consequat.
-                  </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                  <Button fluid color="red">
-                    More Info
-                  </Button>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-            {/* 4 */}
-            <Grid.Column computer="4" tablet="8" mobile="16">
-              <Card fluid>
-                <Card.Content>
-                  <Header floated="right" color="red">
-                    <Icon name="shopping cart" />
-                  </Header>
-                  <Card.Header>
-                    <Header color="red">3453</Header>
-                  </Card.Header>
-                  <Card.Meta>Orders</Card.Meta>
-                  <Card.Description>
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit cum
-                    augue varius, litora netus in et per dictumst eu auctor
-                    consequat.
-                  </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                  <Button fluid color="red">
-                    More Info
-                  </Button>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
-          </Grid>
-          <Grid stackable padded>
-            <Grid.Column>
-              <Table celled striped>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell colSpan="3">
-                      Git Repository
-                    </Table.HeaderCell>
-                  </Table.Row>
-                </Table.Header>
-
-                <Table.Body>
-                  <Table.Row>
-                    <Table.Cell collapsing>
-                      <Icon name="folder" /> node_modules
-                    </Table.Cell>
-                    <Table.Cell>Initial commit</Table.Cell>
-                    <Table.Cell collapsing textAlign="right">
-                      10 hours ago
-                    </Table.Cell>
-                  </Table.Row>
-                  <Table.Row>
-                    <Table.Cell>
-                      <Icon name="folder" /> test
-                    </Table.Cell>
-                    <Table.Cell>Initial commit</Table.Cell>
-                    <Table.Cell textAlign="right">10 hours ago</Table.Cell>
-                  </Table.Row>
-                  <Table.Row>
-                    <Table.Cell>
-                      <Icon name="folder" /> build
-                    </Table.Cell>
-                    <Table.Cell>Initial commit</Table.Cell>
-                    <Table.Cell textAlign="right">10 hours ago</Table.Cell>
-                  </Table.Row>
-                  <Table.Row>
-                    <Table.Cell>
-                      <Icon name="file outline" /> package.json
-                    </Table.Cell>
-                    <Table.Cell>Initial commit</Table.Cell>
-                    <Table.Cell textAlign="right">10 hours ago</Table.Cell>
-                  </Table.Row>
-                  <Table.Row>
-                    <Table.Cell>
-                      <Icon name="file outline" /> Gruntfile.js
-                    </Table.Cell>
-                    <Table.Cell>Initial commit</Table.Cell>
-                    <Table.Cell textAlign="right">10 hours ago</Table.Cell>
-                  </Table.Row>
-                </Table.Body>
-              </Table>
-            </Grid.Column>
-          </Grid>
-          <Grid stackable padded>
-            <Grid.Column computer="4" tablet="8" mobile="16" textAlign="center">
-              <Statistic color="teal">
-                <Statistic.Value>5,550</Statistic.Value>
-                <Statistic.Label>Downloads</Statistic.Label>
-              </Statistic>
-            </Grid.Column>
-            <Grid.Column computer="4" tablet="8" mobile="16" textAlign="center">
-              <Statistic color="teal">
-                <Statistic.Value>5,550</Statistic.Value>
-                <Statistic.Label>Downloads</Statistic.Label>
-              </Statistic>
-            </Grid.Column>
-            <Grid.Column computer="4" tablet="8" mobile="16" textAlign="center">
-              <Statistic color="teal">
-                <Statistic.Value>5,550</Statistic.Value>
-                <Statistic.Label>Downloads</Statistic.Label>
-              </Statistic>
-            </Grid.Column>
-            <Grid.Column computer="4" tablet="8" mobile="16" textAlign="center">
-              <Statistic color="teal">
-                <Statistic.Value>5,550</Statistic.Value>
-                <Statistic.Label>Downloads</Statistic.Label>
-              </Statistic>
-            </Grid.Column>
-          </Grid>
+          {isAuth().role === "admin" ? (
+            <Fragment>
+              <DashboardAdmin />
+            </Fragment>
+          ) : (
+            <Fragment>
+              <DashboardUser />
+            </Fragment>
+          )}
+          {/* <AddCursos /> */}
         </div>
       </Sidebar.Pusher>
     </body>

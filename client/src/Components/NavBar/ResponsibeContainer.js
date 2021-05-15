@@ -104,7 +104,7 @@ class DesktopContainer extends Component {
                           <Dropdown.Item
                             as={Link}
                             to={`/private`}
-                            text="My profile"
+                            text="Perfil"
                             icon="user"
                           />
                           <Dropdown.Item
@@ -113,7 +113,7 @@ class DesktopContainer extends Component {
                                 toast.success("Cerro sesion exitosamente");
                               });
                             }}
-                            text="Logout"
+                            text="Salir"
                             icon="power"
                             as={Link}
                             to="/"
@@ -238,17 +238,12 @@ class MobileContainer extends Component {
                   {isAuth() ? (
                     <Fragment>
                       <Menu.Item position="right">
-                        <Image
-                          avatar
-                          spaced="right"
-                          src={isAuth.image || ImagenUser}
-                        />
-                        <Dropdown pointing="top right" text={isAuth()}>
+                        <Dropdown pointing="top right" text={isAuth().name}>
                           <Dropdown.Menu>
                             <Dropdown.Item
                               as={Link}
                               to={`/private`}
-                              text="My profile"
+                              text="Perfil"
                               icon="user"
                             />
                             <Dropdown.Item
@@ -257,7 +252,7 @@ class MobileContainer extends Component {
                                   toast.success("Cerro sesion exitosamente");
                                 });
                               }}
-                              text="Logout"
+                              text="Salir"
                               icon="power"
                               as={Link}
                               to="/"

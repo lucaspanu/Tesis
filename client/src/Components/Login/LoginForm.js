@@ -47,7 +47,7 @@ const LoginForm = ({ history }) => {
   const informParent = (response) => {
     authenticate(response, () => {
       isAuth() && isAuth().role === "admin"
-        ? history.push("/admin")
+        ? history.push("/private")
         : history.push("/private");
     });
   };
@@ -97,7 +97,7 @@ const LoginForm = ({ history }) => {
             });
             toast.success(`Hey ${res.data.displayName}, Bienvenido!`);
             isAuth() && isAuth().role === "admin"
-              ? history.push("/admin")
+              ? history.push("/private")
               : history.push("/private");
           });
         })
@@ -119,7 +119,9 @@ const LoginForm = ({ history }) => {
   return (
     <div>
       {/* Si esta logeado que lo redirija */}
-      {isAuth() && isAuth().role === "admin" ? <Redirect to="/admin" /> : null}
+      {isAuth() && isAuth().role === "admin" ? (
+        <Redirect to="/private" />
+      ) : null}
       {isAuth() ? <Redirect to="/private" /> : null}
       <ToastContainer />
       <Grid

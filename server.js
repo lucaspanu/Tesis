@@ -35,13 +35,13 @@ if (process.env.NODE_ENV === "development") {
 const authRouter = require("./routes/auth.route");
 const userRouter = require("./routes/user.route");
 const adminRouter = require("./routes/admin.route");
-const turnosRouter = require("./routes/turno.route");
+const cursosRouter = require("./routes/cursos.route");
 
 // Use Routes
 app.use("/api", authRouter);
 app.use("/api", userRouter);
 app.use("/api", adminRouter);
-app.use("/api", turnosRouter);
+app.use("/api", cursosRouter);
 
 app.use((req, res) => {
   res.status(404).json({
