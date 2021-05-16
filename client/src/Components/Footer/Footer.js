@@ -72,6 +72,7 @@ function Footer() {
                 <Icon name="facebook f" />
                 Facebook
               </a>
+
               <br />
               <List.Item style={{ marginTop: "1em" }}>
                 <Icon name="mail" />

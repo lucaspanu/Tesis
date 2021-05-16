@@ -104,9 +104,16 @@ class DesktopContainer extends Component {
                           <Dropdown.Item
                             as={Link}
                             to={`/private`}
+                            text=" Dashboard"
+                            icon="tachometer alternate"
+                          />
+                          <Dropdown.Item
+                            as={Link}
+                            to={`/perfil`}
                             text="Perfil"
                             icon="user"
                           />
+                          <Dropdown.Divider />
                           <Dropdown.Item
                             onClick={() => {
                               signout(() => {
@@ -243,9 +250,16 @@ class MobileContainer extends Component {
                             <Dropdown.Item
                               as={Link}
                               to={`/private`}
+                              text=" Dashboard"
+                              icon="tachometer alternate"
+                            />
+                            <Dropdown.Item
+                              as={Link}
+                              to={`/perfil`}
                               text="Perfil"
                               icon="user"
                             />
+                            <Dropdown.Divider />
                             <Dropdown.Item
                               onClick={() => {
                                 signout(() => {
