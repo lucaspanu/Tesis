@@ -1,10 +1,38 @@
-import React from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { isAuth, signout } from "../../../helpers/auth";
-import { Dropdown, Icon, Menu, Sidebar } from "semantic-ui-react";
+import { Dropdown, Icon, Menu, Popup, Sidebar } from "semantic-ui-react";
+import axios from "axios";
 
 function NavBarDashboard() {
   const [visible, setVisible] = React.useState(false);
+  const [formData, setFormData] = useState({
+    estado: false,
+  });
+
+  const { estado } = formData;
+
+  //Carga de Datos
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  const loadData = () => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/perfil/${isAuth()._id}`)
+      .then((res) => {
+        const { estado } = res.data.perfil;
+        setFormData({
+          ...formData,
+          estado,
+        });
+      })
+      .catch((err) => {
+        if (err.response == null) return;
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       {/* Menu lateral */}
@@ -35,81 +63,120 @@ function NavBarDashboard() {
             </Menu.Item>
           </Menu.Menu>
         </Menu.Item>
+        {isAuth().role === "admin" ? (
+          <Fragment>
+            <Menu.Item>
+              <Menu.Header>Administrativo</Menu.Header>
 
-        <Menu.Item>
-          <Menu.Header>Administrativo</Menu.Header>
-
-          <Menu.Menu>
-            {/* <Menu.Item as={Link} to="#">
+              <Menu.Menu>
+                {/* <Menu.Item as={Link} to="#">
               <div>
                 <Icon name="cogs " />
                 Settings
               </div>
             </Menu.Item> */}
-            <Menu.Item as={Link} to="#">
-              <div>
-                <Icon name="users" />
-                Usuarios
-              </div>
+                <Menu.Item as={Link} to="/admin/cursos">
+                  <div>
+                    <Icon name="users" />
+                    Usuarios
+                  </div>
+                </Menu.Item>
+                <Menu.Item as={Link} to="/admin/nuevo">
+                  <div>
+                    <Icon name="user plus" />
+                    Nuevo Usuario
+                  </div>
+                </Menu.Item>
+                <Menu.Item as={Link} to="/admin/cursos">
+                  <div>
+                    <Icon name="plus" />
+                    Cursos
+                  </div>
+                </Menu.Item>
+                <Menu.Item as={Link} to="/admin/diplomaturas">
+                  <div>
+                    <Icon name="plus" />
+                    Diplomaturas
+                  </div>
+                </Menu.Item>
+                <Menu.Item as={Link} to="/admin/notas">
+                  <div>
+                    <Icon name="signup" />
+                    Notas
+                  </div>
+                </Menu.Item>
+                <Menu.Item as={Link} to="/admin/asistencias">
+                  <div>
+                    <Icon name="signup" />
+                    Asistencias
+                  </div>
+                </Menu.Item>
+                <Menu.Item as={Link} to="/admin/cuotas">
+                  <div>
+                    <Icon name="signup" />
+                    Cuotas
+                  </div>
+                </Menu.Item>
+              </Menu.Menu>
             </Menu.Item>
-            <Menu.Item as={Link} to="#">
-              <div>
-                <Icon name="user plus" />
-                Nuevo Usuario
-              </div>
-            </Menu.Item>
-            <Menu.Item as={Link} to="#">
-              <div>
-                <Icon name="plus" />
-                Cursos
-              </div>
-            </Menu.Item>
-            <Menu.Item as={Link} to="#">
-              <div>
-                <Icon name="plus" />
-                Diplomaturas
-              </div>
-            </Menu.Item>
-            <Menu.Item as={Link} to="#">
-              <div>
-                <Icon name="signup" />
-                Notas
-              </div>
-            </Menu.Item>
-            <Menu.Item as={Link} to="#">
-              <div>
-                <Icon name="signup" />
-                Asistencias
-              </div>
-            </Menu.Item>
-            <Menu.Item as={Link} to="#">
-              <div>
-                <Icon name="signup" />
-                Cuotas
-              </div>
-            </Menu.Item>
-          </Menu.Menu>
-        </Menu.Item>
+          </Fragment>
+        ) : null}
 
-        <Menu.Item>
-          <Menu.Header>Inscripciones</Menu.Header>
-          <Menu.Menu>
-            <Menu.Item as={Link} to="#">
-              <div>
-                <Icon name="book" />
-                Cursos
-              </div>
+        {estado ? (
+          <Fragment>
+            {" "}
+            <Menu.Item>
+              <Menu.Header>Inscripciones</Menu.Header>
+              <Menu.Menu>
+                <Menu.Item as={Link} to="/private/cursos">
+                  <div>
+                    <Icon name="book" />
+                    Cursos
+                  </div>
+                </Menu.Item>
+                <Menu.Item as={Link} to="/private/diplomaturas">
+                  <div>
+                    <Icon name="book" flipped="horizontally" />
+                    Diplomaturas
+                  </div>
+                </Menu.Item>
+              </Menu.Menu>
             </Menu.Item>
-            <Menu.Item as={Link} to="#">
-              <div>
-                <Icon name="book" flipped="horizontally" />
-                Diplomaturas
-              </div>
+          </Fragment>
+        ) : (
+          <Fragment>
+            {" "}
+            <Menu.Item>
+              <Menu.Header>Inscripciones</Menu.Header>
+              <Menu.Menu>
+                <Popup
+                  content="Completa la ficha de inscripcion para acceder a los cursos"
+                  trigger={
+                    <Menu.Item as={Link} to="/perfil">
+                      <div>
+                        <Icon name="book" />
+                        Cursos
+                      </div>
+                    </Menu.Item>
+                  }
+                />
+                <Popup
+                  content="Completa la ficha de inscripcion para acceder a las diplomaturas"
+                  trigger={
+                    <Menu.Item as={Link} to="/perfil">
+                      <div>
+                        <Icon name="book" flipped="horizontally" />
+                        Diplomaturas
+                      </div>
+                    </Menu.Item>
+                  }
+                />
+              </Menu.Menu>
             </Menu.Item>
-          </Menu.Menu>
-        </Menu.Item>
+          </Fragment>
+        )}
 
-        <Menu.Item as={Link} to="#">
+        <Menu.Item as={Link} to="/private/notificaciones">
           <div>
             <Icon name="inbox" />
             Notificaciones

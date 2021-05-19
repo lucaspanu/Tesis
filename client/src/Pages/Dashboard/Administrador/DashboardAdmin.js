@@ -2,6 +2,7 @@ import React from "react";
 import {
   Button,
   Card,
+  Divider,
   Grid,
   Header,
   Icon,
@@ -12,99 +13,34 @@ import {
 function DashboardAdmin() {
   return (
     <div>
+      <br />
       <Grid stackable padded>
-        <Grid.Column computer="4" tablet="8" mobile="16">
-          <Card fluid>
-            <Card.Content>
-              <Header floated="right" color="red">
-                <Icon name="shopping cart" />
-              </Header>
-              <Card.Header>
-                <Header color="red">3453</Header>
-              </Card.Header>
-              <Card.Meta>Orders</Card.Meta>
-              <Card.Description>
-                Lorem ipsum dolor sit amet consectetur adipiscing elit cum augue
-                varius, litora netus in et per dictumst eu auctor consequat.
-              </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <Button fluid color="red">
-                More Info
-              </Button>
-            </Card.Content>
-          </Card>
+        <Grid.Column computer="4" tablet="8" mobile="16" textAlign="center">
+          <Statistic color="teal">
+            <Statistic.Value>5,550</Statistic.Value>
+            <Statistic.Label>Usuarios</Statistic.Label>
+          </Statistic>
         </Grid.Column>
-        {/* 2 */}
-        <Grid.Column computer="4" tablet="8" mobile="16">
-          <Card fluid>
-            <Card.Content>
-              <Header floated="right" color="red">
-                <Icon name="shopping cart" />
-              </Header>
-              <Card.Header>
-                <Header color="red">3453</Header>
-              </Card.Header>
-              <Card.Meta>Orders</Card.Meta>
-              <Card.Description>
-                Lorem ipsum dolor sit amet consectetur adipiscing elit cum augue
-                varius, litora netus in et per dictumst eu auctor consequat.
-              </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <Button fluid color="red">
-                More Info
-              </Button>
-            </Card.Content>
-          </Card>
+        <Grid.Column computer="4" tablet="8" mobile="16" textAlign="center">
+          <Statistic color="green">
+            <Statistic.Value>5,234</Statistic.Value>
+            <Statistic.Label>Usuarios Activos</Statistic.Label>
+          </Statistic>
         </Grid.Column>
-        {/* 3 */}
-        <Grid.Column computer="4" tablet="8" mobile="16">
-          <Card fluid>
-            <Card.Content>
-              <Header floated="right" color="red">
-                <Icon name="shopping cart" />
-              </Header>
-              <Card.Header>
-                <Header color="red">3453</Header>
-              </Card.Header>
-              <Card.Meta>Orders</Card.Meta>
-              <Card.Description>
-                Lorem ipsum dolor sit amet consectetur adipiscing elit cum augue
-                varius, litora netus in et per dictumst eu auctor consequat.
-              </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <Button fluid color="red">
-                More Info
-              </Button>
-            </Card.Content>
-          </Card>
+        <Grid.Column computer="4" tablet="8" mobile="16" textAlign="center">
+          <Statistic color="blue">
+            <Statistic.Value>5,342</Statistic.Value>
+            <Statistic.Label>Profesores</Statistic.Label>
+          </Statistic>
         </Grid.Column>
-        {/* 4 */}
-        <Grid.Column computer="4" tablet="8" mobile="16">
-          <Card fluid>
-            <Card.Content>
-              <Header floated="right" color="red">
-                <Icon name="shopping cart" />
-              </Header>
-              <Card.Header>
-                <Header color="red">3453</Header>
-              </Card.Header>
-              <Card.Meta>Orders</Card.Meta>
-              <Card.Description>
-                Lorem ipsum dolor sit amet consectetur adipiscing elit cum augue
-                varius, litora netus in et per dictumst eu auctor consequat.
-              </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <Button fluid color="red">
-                More Info
-              </Button>
-            </Card.Content>
-          </Card>
+        <Grid.Column computer="4" tablet="8" mobile="16" textAlign="center">
+          <Statistic color="red">
+            <Statistic.Value>5,234</Statistic.Value>
+            <Statistic.Label>Administradores</Statistic.Label>
+          </Statistic>
         </Grid.Column>
       </Grid>
+      <Divider />
       <Grid stackable padded>
         <Grid.Column>
           <Table celled striped>
@@ -154,32 +90,6 @@ function DashboardAdmin() {
               </Table.Row>
             </Table.Body>
           </Table>
-        </Grid.Column>
-      </Grid>
-      <Grid stackable padded>
-        <Grid.Column computer="4" tablet="8" mobile="16" textAlign="center">
-          <Statistic color="teal">
-            <Statistic.Value>5,550</Statistic.Value>
-            <Statistic.Label>Downloads</Statistic.Label>
-          </Statistic>
-        </Grid.Column>
-        <Grid.Column computer="4" tablet="8" mobile="16" textAlign="center">
-          <Statistic color="teal">
-            <Statistic.Value>5,550</Statistic.Value>
-            <Statistic.Label>Downloads</Statistic.Label>
-          </Statistic>
-        </Grid.Column>
-        <Grid.Column computer="4" tablet="8" mobile="16" textAlign="center">
-          <Statistic color="teal">
-            <Statistic.Value>5,550</Statistic.Value>
-            <Statistic.Label>Downloads</Statistic.Label>
-          </Statistic>
-        </Grid.Column>
-        <Grid.Column computer="4" tablet="8" mobile="16" textAlign="center">
-          <Statistic color="teal">
-            <Statistic.Value>5,550</Statistic.Value>
-            <Statistic.Label>Downloads</Statistic.Label>
-          </Statistic>
         </Grid.Column>
       </Grid>
     </div>

@@ -25,6 +25,7 @@ import AdminRoute from "./Routes/AdminRoute";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import DashboarContacto from "./Pages/Dashboard/DashboarContacto";
 import DashboarPerfil from "./Pages/Dashboard/Usuario/DashboarPerfil";
+import DashboardInscrpCursos from "./Pages/Dashboard/Usuario/DashboardInscrpCursos";
 
 function App() {
   return (
@@ -83,6 +84,11 @@ function App() {
           />
           {/* USUARIO */}
           <PrivateRoute path="/perfil" exact component={DashboarPerfil} />
+          <PrivateRoute
+            path="/private/cursos"
+            exact
+            component={DashboardInscrpCursos}
+          />
           {/* ADMINISTRADOR */}
           {/* --------------------- */}
           {/* Pagina no encontrada */}

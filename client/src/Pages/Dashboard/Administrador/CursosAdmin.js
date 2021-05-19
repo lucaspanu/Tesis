@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { getCookie } from "../../../helpers/auth";
 import { Button, Card, Grid, Header, Icon, Image } from "semantic-ui-react";
 
 function CursosAdmin() {

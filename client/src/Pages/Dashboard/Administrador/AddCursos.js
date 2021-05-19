@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { Button, Form, Grid, Header, Segment } from "semantic-ui-react";
 import { isAuth } from "../../../helpers/auth";
 import { Redirect } from "react-router-dom";
 import FileBase from "react-file-base64";
-import CursosAdmin from "./CursosAdmin";
 
 function AddCursos() {
   const [formData, setFormData] = useState({
@@ -88,8 +87,7 @@ function AddCursos() {
     <div>
       {isAuth().role === "admin" ? null : <Redirect to="/private" />}
       <ToastContainer />
-      <CursosAdmin />
-      {/* <Grid
+      <Grid
         textAlign="center"
         style={{ height: "100vh" }}
         verticalAlign="middle"
@@ -171,7 +169,7 @@ function AddCursos() {
             </Segment>
           </Form>
         </Grid.Column>
-      </Grid> */}
+      </Grid>
     </div>
   );
 }
