@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import {
   Breadcrumb,
@@ -13,13 +15,8 @@ import {
   Modal,
   Segment,
 } from "semantic-ui-react";
-import card1 from "../../Assets/Image/Card/card1.jpg";
-import card2 from "../../Assets/Image/Card/card2.jpg";
-import card3 from "../../Assets/Image/Card/card3.jpg";
-import card4 from "../../Assets/Image/Card/card4.jpg";
-import card5 from "../../Assets/Image/Card/card5.jpg";
 
-function Modales() {
+function Modales({ curso }) {
   const [open, setOpen] = React.useState(false);
   return (
     <Modal
@@ -33,11 +30,45 @@ function Modales() {
         </Button>
       }
     >
-      <Modal.Header>Curso de Posgrado</Modal.Header>
+      <Modal.Header>{curso.titulo}</Modal.Header>
+
       <Modal.Content image>
-        <Image size="medium" src={card1} wrapped />
+        <Image
+          size="medium"
+          src={
+            curso.imagen ||
+            "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
+          }
+          wrapped
+        />
         <Modal.Description>
-          <p>Descripcion</p>
+          <Header>Descripcion</Header>
+          {curso.descripcion}
+          {curso.profesor ? (
+            <>
+              <Header>Profesor: </Header>
+              <Icon name="user circle" />
+              {curso.profesor}
+            </>
+          ) : null}
+          {curso.carga_horaria ? (
+            <>
+              <Header>Carga Horaria: </Header>
+              {curso.carga_horaria}
+            </>
+          ) : null}
+          {curso.cupos ? (
+            <>
+              <Header>Cupos: </Header>
+              {curso.cupos}
+            </>
+          ) : null}
+          {curso.costo ? (
+            <>
+              <Header>Costo: </Header>
+              {curso.costo}
+            </>
+          ) : null}
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
@@ -50,6 +81,31 @@ function Modales() {
 }
 
 function CursosList() {
+  const [formData, setFormData] = useState({
+    cursos: [],
+  });
+
+  //Carga de Datos
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  const loadData = () => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/cursos`)
+      .then((res) => {
+        setFormData({
+          ...formData,
+          cursos: res.data,
+        });
+        console.log(cursos);
+      })
+      .catch((err) => {
+        toast.error(`Error To Your Information ${err.response.statusText}`);
+      });
+  };
+
+  const { cursos } = formData;
   return (
     <div>
       <Segment>
@@ -63,115 +119,48 @@ function CursosList() {
           </Breadcrumb>
         </Container>
       </Segment>
+
+      <Divider hidden />
       <Header as="h2" content="Nuestro Cursos" textAlign="center" />
       <Divider hidden />
       <Container>
         <Item.Group divided>
-          <Item>
-            <Item.Image src={card1} />
-            <Item.Content>
-              <Item.Header as="a">Nuestro Cursos</Item.Header>
-              <Item.Meta>
-                <span>Date</span>
-                <span>Category</span>
-              </Item.Meta>
-              <Item.Description>
-                A description which may flow for several lines and give context
-                to the content.
-              </Item.Description>
-              <Item.Extra>
-                <Modales />
-                <Image
-                  avatar
-                  circular
-                  src="/images/wireframe/square-image.png"
+          {cursos.map((curso) => (
+            <>
+              <Item>
+                <Item.Image
+                  src={
+                    curso.imagen ||
+                    "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
+                  }
                 />
-                Username
-              </Item.Extra>
-            </Item.Content>
-          </Item>
+                <Item.Content>
+                  <Item.Header as="a">{curso.titulo}</Item.Header>
+                  <Item.Meta>
+                    <span>{curso.fecha}</span>
+                  </Item.Meta>
+                  <Item.Description>{curso.descripcion}</Item.Description>
+                  <Item.Extra>
+                    <Modales curso={curso} />
+                    {curso.profesor ? (
+                      <>
+                        <Icon name="user circle" />
+                        {curso.profesor}
+                      </>
+                    ) : null}
 
-          <Item>
-            <Item.Image src={card2} />
-            <Item.Content>
-              <Item.Header as="a">Content Header</Item.Header>
-              <Item.Meta>
-                <span>Date</span>
-                <span>Category</span>
-              </Item.Meta>
-              <Item.Description>
-                A description which may flow for several lines and give context
-                to the content.
-              </Item.Description>
-              <Item.Extra>
-                <Button floated="right" primary>
-                  Ver mas
-                  <Icon name="chevron right" />
-                </Button>
-                <Label>Limited</Label>
-              </Item.Extra>
-            </Item.Content>
-          </Item>
-          <Item>
-            <Item.Image src={card3} />
-            <Item.Content>
-              <Item.Header as="a">Content Header</Item.Header>
-              <Item.Meta>
-                <span>Date</span>
-                <span>Category</span>
-              </Item.Meta>
-              <Item.Description>
-                A description which may flow for several lines and give context
-                to the content.
-              </Item.Description>
-              <Item.Extra>
-                <Button primary floated="right">
-                  Ver mas
-                  <Icon name="chevron right" />
-                </Button>
-              </Item.Extra>
-            </Item.Content>
-          </Item>
-          <Item>
-            <Item.Image src={card4} />
-            <Item.Content>
-              <Item.Header as="a">Content Header</Item.Header>
-              <Item.Meta>
-                <span>Date</span>
-                <span>Category</span>
-              </Item.Meta>
-              <Item.Description>
-                A description which may flow for several lines and give context
-                to the content.
-              </Item.Description>
-              <Item.Extra>
-                <Button primary floated="right">
-                  Ver mas
-                  <Icon name="chevron right" />
-                </Button>
-              </Item.Extra>
-            </Item.Content>
-          </Item>
-          <Item>
-            <Item.Image src={card5} />
-            <Item.Content>
-              <Item.Header as="a">Content Header</Item.Header>
-              <Item.Meta>
-                <span>Date</span>
-                <span>Category</span>
-              </Item.Meta>
-              <Item.Description>
-                A description which may flow for several lines and give context
-                to the content.
-              </Item.Description>
-              <Item.Extra>
-                <Button primary floated="right">
-                  Ver mas
-                  <Icon name="chevron right" />
-                </Button>
-              </Item.Extra>
-            </Item.Content>
-          </Item>
+                    {curso.costo ? (
+                      <>
+                        {" "}
+                        <br />
+                        <Label>{curso.costo}</Label>
+                      </>
+                    ) : null}
+                  </Item.Extra>
+                </Item.Content>
+              </Item>
+            </>
+          ))}
         </Item.Group>
       </Container>
       <Divider hidden />

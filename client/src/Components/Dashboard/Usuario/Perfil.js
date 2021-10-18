@@ -17,6 +17,8 @@ import {
   Input,
   Radio,
 } from "semantic-ui-react";
+import EditPerfil from "./EditPerfil";
+import EditPassword from "./EditPassword";
 
 function Perfil() {
   // checkboxs
@@ -319,27 +321,9 @@ function Perfil() {
               </Header>
             </Grid.Column>
             <Grid.Column width={2}>
-              {" "}
-              <Button
-                as="div"
-                labelPosition="right"
-                style={{ marginBottom: "2px" }}
-              >
-                <Button icon>
-                  <Icon name="pencil" />
-                </Button>
-                <Label as="a" basic>
-                  Editar
-                </Label>
-              </Button>
-              <Button as="div" labelPosition="right">
-                <Button icon>
-                  <Icon name="cog" />
-                </Button>
-                <Label as="a" basic>
-                  Cambiar contrasena
-                </Label>
-              </Button>
+              <EditPerfil />
+
+              <EditPassword />
             </Grid.Column>
           </Grid>
         </Container>

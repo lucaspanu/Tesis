@@ -26,6 +26,10 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import DashboarContacto from "./Pages/Dashboard/DashboarContacto";
 import DashboarPerfil from "./Pages/Dashboard/Usuario/DashboarPerfil";
 import DashboardInscrpCursos from "./Pages/Dashboard/Usuario/DashboardInscrpCursos";
+import DashboardCursosAdmin from "./Pages/Dashboard/Administrador/DashboardCursosAdmin";
+import DashboradAddCursos from "./Pages/Dashboard/Administrador/DashboradAddCursos";
+import DashboardNewUser from "./Pages/Dashboard/Administrador/DashboardNewUser";
+import DashboardAdminUsers from "./Pages/Dashboard/Administrador/DashboardAdminUsers";
 
 function App() {
   return (
@@ -90,6 +94,19 @@ function App() {
             component={DashboardInscrpCursos}
           />
           {/* ADMINISTRADOR */}
+          <AdminRoute
+            path="/admin/cursos"
+            exact
+            component={DashboardCursosAdmin}
+          />
+          <AdminRoute path="/admin" exact component={DashboardAdminUsers} />
+          <AdminRoute path="/admin/nuevo" exact component={DashboardNewUser} />
+          <AdminRoute
+            path="/admin/cursos/nuevo"
+            exact
+            component={DashboradAddCursos}
+          />
+
           {/* --------------------- */}
           {/* Pagina no encontrada */}
           <Route component={NoMatch} />

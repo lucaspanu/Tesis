@@ -1,16 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import {
-  Button,
-  Card,
-  Container,
-  Grid,
-  Header,
-  Icon,
-  Image,
-  Segment,
-} from "semantic-ui-react";
+import { Button, Card, Grid, Header, Image, Segment } from "semantic-ui-react";
 
 function InscripcionCursos() {
   const [formData, setFormData] = useState({

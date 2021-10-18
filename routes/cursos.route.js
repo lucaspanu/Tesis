@@ -45,7 +45,7 @@ router.post("/cursos", (req, res) => {
     } else {
       return res.json({
         success: true,
-        message: "Añadido Exitosamente",
+        message: "Curso añadido Exitosamente",
       });
     }
   });

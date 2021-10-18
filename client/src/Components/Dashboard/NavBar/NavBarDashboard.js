@@ -75,7 +75,7 @@ function NavBarDashboard() {
                 Settings
               </div>
             </Menu.Item> */}
-                <Menu.Item as={Link} to="/admin/cursos">
+                <Menu.Item as={Link} to="/admin">
                   <div>
                     <Icon name="users" />
                     Usuarios
