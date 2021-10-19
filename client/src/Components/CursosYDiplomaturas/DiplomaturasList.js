@@ -34,7 +34,7 @@ function DiplomaturasList() {
       </Segment>
       <Header as="h2" content="Nuestras Diplomaturas" textAlign="center" />
       <Divider hidden />
-      <Container>
+      <Container style={{ minHeight: "60vh" }}>
         <Item.Group divided>
           <Item>
             <Item.Image src={card1} />

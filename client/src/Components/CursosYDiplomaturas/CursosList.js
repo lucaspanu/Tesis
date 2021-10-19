@@ -123,7 +123,7 @@ function CursosList() {
       <Divider hidden />
       <Header as="h2" content="Nuestro Cursos" textAlign="center" />
       <Divider hidden />
-      <Container>
+      <Container style={{ minHeight: "60vh" }}>
         <Item.Group divided>
           {cursos.map((curso) => (
             <>
