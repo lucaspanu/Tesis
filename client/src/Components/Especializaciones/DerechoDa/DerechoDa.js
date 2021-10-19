@@ -15,6 +15,8 @@ import {
 } from "semantic-ui-react";
 
 import imagen from "../../../Assets/Image/posgrado.jpg";
+import DAPlanEstudio from "./DAPlanEstudio";
+import DAPreguntas from "./DAPreguntas";
 
 const panes = [
   {
@@ -22,17 +24,115 @@ const panes = [
 
     render: () => (
       <Tab.Pane>
-        <p style={{ fontSize: "1.1em" }}>Informacion</p>
-        {/* <DAPreguntas /> */}
+        <p style={{ fontSize: "1.1em" }}>
+          Como fundamentos de creación de la carrera de posgrado Especialización
+          en Derecho Administrativo, se tuvo en cuenta el proceso de
+          transformación social e institucional operado en los últimos años que
+          ha determinado que tanto el Estado como las empresas públicas y
+          privadas, así como los ciudadanos mismos, hayan debido asumir nuevos
+          roles, tales como el de usuarios de servicios públicos, partícipes de
+          procedimientos de audiencias públicas o integrantes de asociaciones
+          que protegen los nuevos derechos de incidencia colectiva. Las
+          innumerables cuestiones que se suscitan como consecuencia de tales
+          cambios exigen la presencia de abogados con alta capacitación en
+          Derecho Administrativo.
+        </p>
+        <br />
+        <p style={{ fontSize: "1.1em" }}>
+          Atendiendo a tales circunstancias, se creó la Carrera de
+          Especialización en Derecho Administrativo, concebida con el propósito
+          de formar a los abogados graduados de una sólida formación –teórica y
+          práctica- que les permita resolver, con justicia y eficiencia, los
+          diferentes problemas que se les presenten en la actividad profesional,
+          sea que la desarrollen en los diversos órganos de la Administración
+          Central y Descentralizada, en el sector privado, o en el ámbito de la
+          Legislación o la Justicia.
+        </p>
+        <DAPreguntas />
       </Tab.Pane>
     ),
   },
   {
-    menuItem: "Materias Optativas",
+    menuItem: "Plan de Estudios",
     render: () => (
       <Tab.Pane>
-        {/* <DAPlanEstudio /> */}
-        <h1>MAterias Optativas</h1>
+        <DAPlanEstudio />
+      </Tab.Pane>
+    ),
+  },
+  {
+    menuItem: "Docentes",
+    render: () => (
+      <Tab.Pane>
+        <Header as="h3">Cuerpo Docente</Header>
+        <p style={{ fontSize: "1em" }}>
+          ALEJANDRO USLENGHI - UBA – UCA – UNIV. AUSTRAL <br />
+          MARÍA SUSANA VILLARRUEL - UCA
+          <br />
+          JUAN GALEANO - UCA
+          <br />
+          ADELINA LOIANNO – UBA – U.C.E Y S<br />
+          OSCAR FLORES – UNT
+          <br />
+          MARÍO REJTMAN FARAH – UBA
+          <br />
+          CARLOS BALBIN - UBA
+          <br />
+          JUAN STUPENENGO – UBA – UNIV. LA MATANZA
+          <br />
+          PABLO ÁNGEL GUTIÉRREZ COLANTUONO - UNIV. NAC. COMAHUE
+          <br />
+          FLORENCIA CASAS - UNT
+          <br />
+          AUGUSTO GONZALEZ NAVARRO - UNT
+          <br />
+          PABLO MARTIN MERCADO - UNT
+          <br />
+          FERNANDO GARCÍA PULLÉS – UBA – UCA – UNIV. AUSTRAL
+          <br />
+          RODOLFO N. NOVILLO - UNT
+          <br />
+          BLANCA HERRERA DE VILLAVICENCIO - UNT
+          <br />
+          MARÍA PAMELA TENREYRO- UNT
+          <br />
+          DANTE MIRRA - UNT
+          <br />
+          MIRIAM IVANEGA – UBA – U.N. DE LA MATANZA
+          <br />
+          FEDERICO NAZUR - UNT
+          <br />
+          DANIEL NALLAR - – UNIV. CATOLICA DE SALTA
+          <br />
+          LUIS ALFREDO LÓPEZ - UNT
+          <br />
+          SUSANA VEGA - UBA
+          <br />
+          MARÍA ROTAECHE - UBA
+          <br />
+          FERNANDO E. GRANEROS – UNT
+          <br />
+          JUAN G. CORVALÁN – UBA
+          <br />
+          ANA DE LA VEGA DE DÍAZ RICCI – UNT - UNSTA
+          <br />
+          OSCAR AGUILAR VALDÉZ – UBA - UCA
+          <br />
+          HERNAN PÉREZ BOIANI - UBA
+          <br />
+          ROBERTO SOBRE CASAS - UNT
+          <br />
+          LUIS ESTEBAN CARO - UNT
+          <br />
+          CYNTHIA PAOLA GONZALEZ
+          <br />
+          MARTA YOLANDA TEJERIZO – UNT
+          <br />
+          MARÍA ELENA CABALLERO - UNT
+          <br />
+          LUCIANA ESPASA - UNT
+          <br />
+        </p>
       </Tab.Pane>
     ),
   },
