@@ -71,7 +71,7 @@ export default class DerechoPenal extends Component {
           </Container>
         </Segment>
         <Segment>
-          <Container>
+          <Container style={{ minHeight: "60vh" }}>
             <Label as="a" color="blue" ribbon>
               Posgrado
             </Label>

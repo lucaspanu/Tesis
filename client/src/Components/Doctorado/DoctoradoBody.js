@@ -66,7 +66,7 @@ export default class DoctoradoBody extends Component {
           </Container>
         </Segment>
         <Segment>
-          <Container>
+          <Container style={{ minHeight: "60vh" }}>
             <Label as="a" color="red" ribbon>
               Doctorado
             </Label>
