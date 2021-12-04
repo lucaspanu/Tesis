@@ -47,7 +47,6 @@ function NavBarDashboard() {
       >
         <Menu.Item>
           <Menu.Header>General</Menu.Header>
-
           <Menu.Menu>
             <Menu.Item as={Link} to="/private">
               <div>
@@ -63,7 +62,7 @@ function NavBarDashboard() {
             </Menu.Item>
           </Menu.Menu>
         </Menu.Item>
-        {isAuth().role === "admin" ? (
+        {isAuth().role === "admin" && (
           <Fragment>
             <Menu.Item>
               <Menu.Header>Administrativo</Menu.Header>
@@ -99,12 +98,6 @@ function NavBarDashboard() {
                     Diplomaturas
                   </div>
                 </Menu.Item>
-                <Menu.Item as={Link} to="/admin/notas">
-                  <div>
-                    <Icon name="signup" />
-                    Notas
-                  </div>
-                </Menu.Item>
                 <Menu.Item as={Link} to="/admin/asistencias">
                   <div>
                     <Icon name="signup" />
@@ -120,7 +113,7 @@ function NavBarDashboard() {
               </Menu.Menu>
             </Menu.Item>
           </Fragment>
-        ) : null}
+        )}
 
         {estado ? (
           <Fragment>
@@ -152,7 +145,7 @@ function NavBarDashboard() {
                 <Popup
                   content="Completa la ficha de inscripcion para acceder a los cursos"
                   trigger={
-                    <Menu.Item as={Link} to="/perfil">
+                    <Menu.Item as={Link} to="/perfil" disabled>
                       <div>
                         <Icon name="book" />
                         Cursos
@@ -163,7 +156,7 @@ function NavBarDashboard() {
                 <Popup
                   content="Completa la ficha de inscripcion para acceder a las diplomaturas"
                   trigger={
-                    <Menu.Item as={Link} to="/perfil">
+                    <Menu.Item as={Link} to="/perfil" disabled>
                       <div>
                         <Icon name="book" flipped="horizontally" />
                         Diplomaturas
@@ -175,13 +168,6 @@ function NavBarDashboard() {
             </Menu.Item>
           </Fragment>
         )}
-
-        <Menu.Item as={Link} to="/private/notificaciones">
-          <div>
-            <Icon name="inbox" />
-            Notificaciones
-          </div>
-        </Menu.Item>
 
         <Menu.Item>
           <Menu.Header>Contacto</Menu.Header>
@@ -212,21 +198,6 @@ function NavBarDashboard() {
             </Menu.Item>
           </Menu.Menu>
         </Menu.Item>
-
-        {/* <Menu.Item>
-          <Form action="#">
-            <Input size="small" icon="search" placeholder="Search..." />
-          </Form>
-        </Menu.Item>
-
-        <Segment inverted>
-          <Progress color="olive" inverted percent={36} size="tiny">
-            Monthy Bandwidth
-          </Progress>
-          <Progress color="teal" inverted percent={76} size="tiny">
-            Disk Usage
-          </Progress>
-        </Segment> */}
       </Sidebar>
       {/* Menu lateral */}
 

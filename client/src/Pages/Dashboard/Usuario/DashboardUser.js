@@ -8,8 +8,6 @@ import {
   Header,
   Icon,
   Segment,
-  Statistic,
-  Table,
 } from "semantic-ui-react";
 
 function DashboardUser() {
