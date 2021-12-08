@@ -3,14 +3,13 @@ const expressJwt = require("express-jwt");
 const _ = require("lodash");
 const { OAuth2Client } = require("google-auth-library");
 const fetch = require("node-fetch");
-
 const { validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
-const expressJWT = require("express-jwt");
 // Custom error handler to get useful error from databse errors
 const { errorHandler } = require("../helpers/dbErrorHandling");
 // I will use for send email sendgrid you can use nodemaile also
 const sgMail = require("@sendgrid/mail");
+
 sgMail.setApiKey(process.env.MAIL_KEY);
 
 exports.registerControllerCombined = (req, res) => {

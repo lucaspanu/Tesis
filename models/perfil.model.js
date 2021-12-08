@@ -88,6 +88,9 @@ const perfilSchema = new mongoose.Schema({
   imagen_cv: {
     type: String,
   },
+  cursos: {
+    type: Array,
+  },
   estado: {
     type: Boolean,
     default: true,

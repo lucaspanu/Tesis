@@ -11,8 +11,10 @@ router.post("/cursos", (req, res) => {
     fecha,
     costo,
     carga_horaria,
-    profesor,
-    cupos,
+    tipo_curso,
+    profesores,
+    alumnos,
+    nro_cuotas,
     imagen,
     estado,
   } = req.body;
@@ -20,7 +22,7 @@ router.post("/cursos", (req, res) => {
   if (!titulo) {
     return res.status(400).json({
       ok: false,
-      motivo: "El horario es un campo obligatorio",
+      motivo: "El Titulo es un campo obligatorio",
     });
   }
 
@@ -30,8 +32,10 @@ router.post("/cursos", (req, res) => {
     fecha,
     costo,
     carga_horaria,
-    profesor,
-    cupos,
+    tipo_curso,
+    profesores,
+    alumnos,
+    nro_cuotas,
     imagen,
     estado,
   });
@@ -104,8 +108,10 @@ router.put("/curso/edit/:id", function (req, res) {
     fecha,
     costo,
     carga_horaria,
-    profesor,
-    cupos,
+    tipo_curso,
+    profesores,
+    alumnos,
+    nro_cuotas,
     imagen,
     estado,
   } = req.body;
@@ -119,8 +125,10 @@ router.put("/curso/edit/:id", function (req, res) {
       fecha,
       costo,
       carga_horaria,
-      profesor,
-      cupos,
+      tipo_curso,
+      profesores,
+      alumnos,
+      nro_cuotas,
       imagen,
       estado,
     },

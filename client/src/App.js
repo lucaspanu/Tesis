@@ -27,9 +27,12 @@ import DashboarContacto from "./Pages/Dashboard/DashboarContacto";
 import DashboarPerfil from "./Pages/Dashboard/Usuario/DashboarPerfil";
 import DashboardInscrpCursos from "./Pages/Dashboard/Usuario/DashboardInscrpCursos";
 import DashboardCursosAdmin from "./Pages/Dashboard/Administrador/DashboardCursosAdmin";
+import DashboardDiplomaturas from "./Pages/Dashboard/Administrador/DashboardDiplomaturas";
 import DashboradAddCursos from "./Pages/Dashboard/Administrador/DashboradAddCursos";
+import DashboardAddDiplomatura from "./Pages/Dashboard/Administrador/DashboardAddDiplomatura";
 import DashboardNewUser from "./Pages/Dashboard/Administrador/DashboardNewUser";
 import DashboardAdminUsers from "./Pages/Dashboard/Administrador/DashboardAdminUsers";
+import DashboardInscrpDiplomaturas from "./Pages/Dashboard/Usuario/DashboardInscrpDiplomaturas";
 
 function App() {
   return (
@@ -93,6 +96,11 @@ function App() {
             exact
             component={DashboardInscrpCursos}
           />
+          <PrivateRoute
+            path="/private/diplomaturas"
+            exact
+            component={DashboardInscrpDiplomaturas}
+          />
           {/* ADMINISTRADOR */}
           <AdminRoute
             path="/admin/cursos"
@@ -106,7 +114,16 @@ function App() {
             exact
             component={DashboradAddCursos}
           />
-
+          <AdminRoute
+            path="/admin/diplomaturas/nuevo"
+            exact
+            component={DashboardAddDiplomatura}
+          />
+          <AdminRoute
+            path="/admin/diplomaturas"
+            exact
+            component={DashboardDiplomaturas}
+          />
           {/* --------------------- */}
           {/* Pagina no encontrada */}
           <Route component={NoMatch} />

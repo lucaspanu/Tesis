@@ -102,10 +102,10 @@ const LoginForm = ({ history }) => {
           });
         })
         .catch((err) => {
-          if (err.response == null)
+          if (err.response === null)
             return toast.error("No se pudo conectar a la base de datos");
 
-          if (err.response.status == 401)
+          if (err.response.status === 401)
             return toast.error("Correo o contraseña incorrectos");
 
           console.log(err.response);

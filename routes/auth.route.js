@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-//Validation
+// Validation
 
 const {
   validRegister,
@@ -37,7 +37,7 @@ router.put(
 );
 router.put("/password/reset", resetPasswordValidator, resetPasswordController);
 
-// // Google and Facebook Login
+// Google and Facebook Login
 router.post("/googlelogin", googleController);
 router.post("/facebooklogin", facebookController);
 

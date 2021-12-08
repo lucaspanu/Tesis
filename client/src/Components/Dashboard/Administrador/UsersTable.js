@@ -1,12 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Container, Grid, Icon, Table } from "semantic-ui-react";
+import { Button, Container, Icon, Table } from "semantic-ui-react";
 
 function UsersTable({ users }) {
   return (
     <Container>
-      {/* <Grid stackable padded>
-        <Grid.Column> */}
       <Table singleLine>
         <Table.Header>
           <Table.Row>
@@ -50,8 +48,6 @@ function UsersTable({ users }) {
           </Table.Row>
         </Table.Footer>
       </Table>
-      {/* </Grid.Column> */}
-      {/* </Grid> */}
     </Container>
   );
 }

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
+import { Header, Divider, Segment } from "semantic-ui-react";
 import UsersTable from "../../../Components/Dashboard/Administrador/UsersTable";
 import NavContainer from "../../../Components/Dashboard/NavBar/NavContainer";
 
@@ -32,7 +33,11 @@ function DashboardAdminUsers() {
   return (
     <NavContainer>
       <ToastContainer />
-      <UsersTable users={users} />
+      <Segment basic>
+        <Header as="h2">Usuarios</Header>
+        <Divider />
+        <UsersTable users={users} />
+      </Segment>
     </NavContainer>
   );
 }

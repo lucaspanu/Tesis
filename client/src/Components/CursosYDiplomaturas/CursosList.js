@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import {
   Breadcrumb,
@@ -15,8 +14,9 @@ import {
   Modal,
   Segment,
 } from "semantic-ui-react";
+import NoFound from "../NoFound/NoFound";
 
-function Modales({ curso }) {
+export function CursoDetail({ curso, users }) {
   const [open, setOpen] = React.useState(false);
   return (
     <Modal
@@ -44,29 +44,31 @@ function Modales({ curso }) {
         <Modal.Description>
           <Header>Descripcion</Header>
           {curso.descripcion}
-          {curso.profesor ? (
-            <>
-              <Header>Profesor: </Header>
-              <Icon name="user circle" />
-              {curso.profesor}
-            </>
-          ) : null}
+          {curso.profesores
+            ? curso.profesores.map((profesor) => (
+                <>
+                  <Header>Profesor: </Header>
+                  <Icon name="user circle" />
+                  {users.find((x) => x._id === profesor).name}
+                </>
+              ))
+            : null}
           {curso.carga_horaria ? (
             <>
               <Header>Carga Horaria: </Header>
               {curso.carga_horaria}
             </>
           ) : null}
-          {curso.cupos ? (
+          {curso.nro_cuotas ? (
             <>
-              <Header>Cupos: </Header>
-              {curso.cupos}
+              <Header>Numero de cuotas: </Header>
+              {curso.nro_cuotas}
             </>
           ) : null}
           {curso.costo ? (
             <>
               <Header>Costo: </Header>
-              {curso.costo}
+              {`$ ${curso.costo}`}
             </>
           ) : null}
         </Modal.Description>
@@ -83,7 +85,10 @@ function Modales({ curso }) {
 function CursosList() {
   const [formData, setFormData] = useState({
     cursos: [],
+    users: [],
   });
+
+  const { cursos, users } = formData;
 
   //Carga de Datos
   useEffect(() => {
@@ -92,20 +97,28 @@ function CursosList() {
 
   const loadData = () => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/cursos`)
-      .then((res) => {
-        setFormData({
-          ...formData,
-          cursos: res.data,
-        });
-        console.log(cursos);
-      })
+      .all([
+        axios.get(`${process.env.REACT_APP_API_URL}/cursos`),
+        axios.get(`${process.env.REACT_APP_API_URL}/admin/users`),
+      ])
+      .then(
+        axios.spread((cursos, users) => {
+          const cursosArray = cursos.data;
+          const usersArray = users.data;
+          setFormData({
+            ...formData,
+            cursos: cursosArray,
+            users: usersArray,
+          });
+        })
+      )
       .catch((err) => {
-        toast.error(`Error To Your Information ${err.response.statusText}`);
+        console.error(err);
       });
   };
 
-  const { cursos } = formData;
+  const data = cursos.filter((x) => x.tipo_curso === "curso");
+
   return (
     <div>
       <Segment>
@@ -120,47 +133,51 @@ function CursosList() {
         </Container>
       </Segment>
 
-      <Divider hidden />
       <Header as="h2" content="Nuestro Cursos" textAlign="center" />
       <Divider hidden />
       <Container style={{ minHeight: "60vh" }}>
         <Item.Group divided>
-          {cursos.map((curso) => (
+          {data.length ? (
+            data.map((curso) => (
+              <>
+                <Item>
+                  <Item.Image
+                    src={
+                      curso.imagen ||
+                      "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
+                    }
+                  />
+                  <Item.Content>
+                    <Item.Header as="a">{curso.titulo}</Item.Header>
+                    <Item.Meta>
+                      <span>{curso.fecha}</span>
+                    </Item.Meta>
+                    <Item.Description>{curso.descripcion}</Item.Description>
+                    <Item.Extra>
+                      <CursoDetail curso={curso} users={users} />
+                      {curso.costo ? (
+                        <>
+                          <br />
+                          <Label>
+                            {" "}
+                            <Icon name="money" /> {curso.costo}
+                          </Label>
+                        </>
+                      ) : null}
+                    </Item.Extra>
+                  </Item.Content>
+                </Item>
+              </>
+            ))
+          ) : (
             <>
-              <Item>
-                <Item.Image
-                  src={
-                    curso.imagen ||
-                    "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
-                  }
-                />
-                <Item.Content>
-                  <Item.Header as="a">{curso.titulo}</Item.Header>
-                  <Item.Meta>
-                    <span>{curso.fecha}</span>
-                  </Item.Meta>
-                  <Item.Description>{curso.descripcion}</Item.Description>
-                  <Item.Extra>
-                    <Modales curso={curso} />
-                    {curso.profesor ? (
-                      <>
-                        <Icon name="user circle" />
-                        {curso.profesor}
-                      </>
-                    ) : null}
-
-                    {curso.costo ? (
-                      <>
-                        {" "}
-                        <br />
-                        <Label>{curso.costo}</Label>
-                      </>
-                    ) : null}
-                  </Item.Extra>
-                </Item.Content>
-              </Item>
+              <Divider hidden />
+              <NoFound
+                basic={false}
+                text={"No se encontraron cursos disponibles"}
+              />
             </>
-          ))}
+          )}
         </Item.Group>
       </Container>
       <Divider hidden />

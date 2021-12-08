@@ -36,6 +36,7 @@ const authRouter = require("./routes/auth.route");
 const userRouter = require("./routes/user.route");
 const adminRouter = require("./routes/admin.route");
 const cursosRouter = require("./routes/cursos.route");
+const inscripcionesRouter = require("./routes/inscripciones.route");
 const perfilRouter = require("./routes/perfil.route");
 
 // Use Routes
@@ -43,6 +44,7 @@ app.use("/api", authRouter);
 app.use("/api", userRouter);
 app.use("/api", adminRouter);
 app.use("/api", cursosRouter);
+app.use("/api", inscripcionesRouter);
 app.use("/api", perfilRouter);
 
 app.use((req, res) => {

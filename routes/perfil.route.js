@@ -109,7 +109,6 @@ router.get("/perfil/:id", function (req, res) {
 
 //Edit
 router.put("/perfil/edit/:id", function (req, res) {
-  // console.log('UPDATE USER - req.user', req.user, 'UPDATE DATA', req.body);
   const {
     userId,
     dni,

@@ -1,24 +1,55 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import {
   Breadcrumb,
-  Button,
   Container,
   Divider,
   Header,
   Icon,
-  Image,
   Item,
   Label,
   Segment,
 } from "semantic-ui-react";
-import card1 from "../../Assets/Image/Card/card1.jpg";
-import card2 from "../../Assets/Image/Card/card2.jpg";
-import card3 from "../../Assets/Image/Card/card3.jpg";
-import card4 from "../../Assets/Image/Card/card4.jpg";
-import card5 from "../../Assets/Image/Card/card5.jpg";
+import { CursoDetail } from "./CursosList";
+import NoFound from "../NoFound/NoFound";
 
 function DiplomaturasList() {
+  const [formData, setFormData] = useState({
+    cursos: [],
+    users: [],
+  });
+
+  const { cursos, users } = formData;
+
+  //Carga de Datos
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  const loadData = () => {
+    axios
+      .all([
+        axios.get(`${process.env.REACT_APP_API_URL}/cursos`),
+        axios.get(`${process.env.REACT_APP_API_URL}/admin/users`),
+      ])
+      .then(
+        axios.spread((cursos, users) => {
+          const cursosArray = cursos.data;
+          const usersArray = users.data;
+          setFormData({
+            ...formData,
+            cursos: cursosArray,
+            users: usersArray,
+          });
+        })
+      )
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  const data = cursos.filter((x) => x.tipo_curso === "diplomatura");
   return (
     <div>
       <Segment>
@@ -32,118 +63,52 @@ function DiplomaturasList() {
           </Breadcrumb>
         </Container>
       </Segment>
+
       <Header as="h2" content="Nuestras Diplomaturas" textAlign="center" />
       <Divider hidden />
       <Container style={{ minHeight: "60vh" }}>
         <Item.Group divided>
-          <Item>
-            <Item.Image src={card1} />
-            <Item.Content>
-              <Item.Header as="a">Nuestras Diplomaturas</Item.Header>
-              <Item.Meta>
-                <span>Date</span>
-                <span>Category</span>
-              </Item.Meta>
-              <Item.Description>
-                A description which may flow for several lines and give context
-                to the content.
-              </Item.Description>
-              <Item.Extra>
-                <Button floated="right" primary>
-                  Ver mas
-                  <Icon name="chevron right" />
-                </Button>
-                <Image
-                  avatar
-                  circular
-                  src="/images/wireframe/square-image.png"
-                />
-                Username
-              </Item.Extra>
-            </Item.Content>
-          </Item>
-
-          <Item>
-            <Item.Image src={card2} />
-            <Item.Content>
-              <Item.Header as="a">Content Header</Item.Header>
-              <Item.Meta>
-                <span>Date</span>
-                <span>Category</span>
-              </Item.Meta>
-              <Item.Description>
-                A description which may flow for several lines and give context
-                to the content.
-              </Item.Description>
-              <Item.Extra>
-                <Button floated="right" primary>
-                  Ver mas
-                  <Icon name="chevron right" />
-                </Button>
-                <Label>Limited</Label>
-              </Item.Extra>
-            </Item.Content>
-          </Item>
-          <Item>
-            <Item.Image src={card3} />
-            <Item.Content>
-              <Item.Header as="a">Content Header</Item.Header>
-              <Item.Meta>
-                <span>Date</span>
-                <span>Category</span>
-              </Item.Meta>
-              <Item.Description>
-                A description which may flow for several lines and give context
-                to the content.
-              </Item.Description>
-              <Item.Extra>
-                <Button primary floated="right">
-                  Ver mas
-                  <Icon name="chevron right" />
-                </Button>
-              </Item.Extra>
-            </Item.Content>
-          </Item>
-          <Item>
-            <Item.Image src={card4} />
-            <Item.Content>
-              <Item.Header as="a">Content Header</Item.Header>
-              <Item.Meta>
-                <span>Date</span>
-                <span>Category</span>
-              </Item.Meta>
-              <Item.Description>
-                A description which may flow for several lines and give context
-                to the content.
-              </Item.Description>
-              <Item.Extra>
-                <Button primary floated="right">
-                  Ver mas
-                  <Icon name="chevron right" />
-                </Button>
-              </Item.Extra>
-            </Item.Content>
-          </Item>
-          <Item>
-            <Item.Image src={card5} />
-            <Item.Content>
-              <Item.Header as="a">Content Header</Item.Header>
-              <Item.Meta>
-                <span>Date</span>
-                <span>Category</span>
-              </Item.Meta>
-              <Item.Description>
-                A description which may flow for several lines and give context
-                to the content.
-              </Item.Description>
-              <Item.Extra>
-                <Button primary floated="right">
-                  Ver mas
-                  <Icon name="chevron right" />
-                </Button>
-              </Item.Extra>
-            </Item.Content>
-          </Item>
+          {data.length ? (
+            data.map((curso) => (
+              <>
+                <Item>
+                  <Item.Image
+                    src={
+                      curso.imagen ||
+                      "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
+                    }
+                  />
+                  <Item.Content>
+                    <Item.Header as="a">{curso.titulo}</Item.Header>
+                    <Item.Meta>
+                      <span>{curso.fecha}</span>
+                    </Item.Meta>
+                    <Item.Description>{curso.descripcion}</Item.Description>
+                    <Item.Extra>
+                      <CursoDetail curso={curso} users={users} />
+                      {curso.costo ? (
+                        <>
+                          <br />
+                          <Label>
+                            {" "}
+                            <Icon name="money" /> {curso.costo}
+                          </Label>
+                        </>
+                      ) : null}
+                    </Item.Extra>
+                  </Item.Content>
+                </Item>
+              </>
+            ))
+          ) : (
+            <>
+              <Divider hidden />
+              <NoFound
+                basic={false}
+                text={"No se encontraron diplomaturas disponibles"}
+              />
+            </>
+          )}
         </Item.Group>
       </Container>
       <Divider hidden />

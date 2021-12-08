@@ -16,8 +16,9 @@ import {
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import FileBase from "react-file-base64";
+import NoFound from "../../NoFound/NoFound";
 
-function Modales({ curso }) {
+function VerCurso({ curso, users }) {
   const [open, setOpen] = React.useState(false);
   return (
     <Modal
@@ -40,29 +41,31 @@ function Modales({ curso }) {
         <Modal.Description>
           <Header>Descripcion</Header>
           {curso.descripcion}
-          {curso.profesor ? (
-            <>
-              <Header>Profesor: </Header>
-              <Icon name="user circle" />
-              {curso.profesor}
-            </>
-          ) : null}
+          {curso.profesores
+            ? curso.profesores.map((profesor) => (
+                <>
+                  <Header>Profesor: </Header>
+                  <Icon name="user circle" />
+                  {users.find((x) => x._id === profesor).name}
+                </>
+              ))
+            : null}
           {curso.carga_horaria ? (
             <>
               <Header>Carga Horaria: </Header>
               {curso.carga_horaria}
             </>
           ) : null}
-          {curso.cupos ? (
+          {curso.nro_cuotas ? (
             <>
-              <Header>Cupos: </Header>
-              {curso.cupos}
+              <Header>Numero Cuotas: </Header>
+              {curso.nro_cuotas}
             </>
           ) : null}
           {curso.costo ? (
             <>
               <Header>Costo: </Header>
-              {curso.costo}
+              {`$ ${curso.costo}`}
             </>
           ) : null}
         </Modal.Description>
@@ -76,13 +79,12 @@ function Modales({ curso }) {
   );
 }
 
-function Confirm({ curso }) {
+function DeleteCurso({ curso }) {
   const [open, setOpen] = React.useState(false);
 
   //evento Borrar
   const handleBorrar = (text) => (e) => {
     setOpen(false);
-    console.log(text);
     e.preventDefault();
     axios
       .delete(`${process.env.REACT_APP_API_URL}/cursos/${text}`)
@@ -127,7 +129,7 @@ function Confirm({ curso }) {
   );
 }
 
-function EditCurso({ curso }) {
+function EditCurso({ curso, users }) {
   const [open, setOpen] = React.useState(false);
 
   const [formData, setFormData] = useState({
@@ -136,8 +138,10 @@ function EditCurso({ curso }) {
     fecha: curso.fecha,
     costo: curso.costo,
     carga_horaria: curso.carga_horaria,
-    profesor: curso.profesor,
-    cupos: curso.cupos,
+    tipo_curso: curso.tipo_curso,
+    profesores: curso.profesores,
+    alumnos: curso.alumnos,
+    nro_cuotas: curso.nro_cuotas,
     imagen: curso.imagen,
   });
 
@@ -145,10 +149,12 @@ function EditCurso({ curso }) {
     titulo,
     descripcion,
     fecha,
+    nro_cuotas,
     costo,
     carga_horaria,
-    profesor,
-    cupos,
+    tipo_curso,
+    profesores,
+    alumnos,
     imagen,
   } = formData;
 
@@ -156,11 +162,13 @@ function EditCurso({ curso }) {
   const handleChange = (text) => (e) => {
     setFormData({ ...formData, [text]: e.target.value });
   };
+  const handleProfesoresChange = (text) => (e, data) => {
+    setFormData({ ...formData, [text]: data.value });
+  };
 
   //evento Edit
   const handleEdit = (text) => (e) => {
     setOpen(false);
-    console.log(text);
     e.preventDefault();
     setFormData({ ...formData });
     axios
@@ -168,10 +176,12 @@ function EditCurso({ curso }) {
         titulo,
         descripcion,
         fecha,
+        nro_cuotas,
         costo,
         carga_horaria,
-        profesor,
-        cupos,
+        tipo_curso,
+        profesores,
+        alumnos,
         imagen,
       })
       .then((res) => {
@@ -184,6 +194,15 @@ function EditCurso({ curso }) {
         console.log(err.response);
       });
   };
+
+  const options = users
+    .filter((x) => x.role === "Profesor")
+    .map((x) => ({
+      key: x._id,
+      text: x.name,
+      value: x._id,
+    }));
+
   return (
     <Modal
       onClose={() => setOpen(false)}
@@ -216,14 +235,15 @@ function EditCurso({ curso }) {
               onChange={handleChange("fecha")}
               value={fecha}
             />
-            <Form.Input
+            <Form.Dropdown
               fluid
-              icon="usd"
-              iconPosition="left"
-              type="number"
-              label="Costo"
-              onChange={handleChange("costo")}
-              value={costo}
+              multiple
+              search
+              selection
+              label="Profesores"
+              onChange={handleProfesoresChange("profesores")}
+              value={profesores}
+              options={options}
             />
           </Form.Group>
           <Form.Group widths="equal">
@@ -236,17 +256,20 @@ function EditCurso({ curso }) {
             />
             <Form.Input
               fluid
-              type="text"
-              label="Cupos"
-              onChange={handleChange("cupos")}
-              value={cupos}
+              icon="usd"
+              iconPosition="left"
+              type="number"
+              label="Costo"
+              onChange={handleChange("costo")}
+              value={costo}
             />
+
             <Form.Input
               fluid
-              type="text"
-              label="Profesor acargo"
-              onChange={handleChange("profesor")}
-              value={profesor}
+              type="number"
+              label="Numero de Cuotas"
+              onChange={handleChange("nro_cuotas")}
+              value={nro_cuotas}
             />
           </Form.Group>
           <Form.Input fluid label="Imagen">
@@ -273,12 +296,13 @@ function EditCurso({ curso }) {
   );
 }
 
-function CursosAdmin() {
+function CursosAdmin({ diplomaturas }) {
   const [formData, setFormData] = useState({
     cursos: [],
+    users: [],
   });
 
-  const { cursos } = formData;
+  const { cursos, users } = formData;
 
   //Carga de Datos
   useEffect(() => {
@@ -287,24 +311,40 @@ function CursosAdmin() {
 
   const loadData = () => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/cursos`)
-      .then((res) => {
-        setFormData({
-          ...formData,
-          cursos: res.data,
-        });
-      })
+      .all([
+        axios.get(`${process.env.REACT_APP_API_URL}/cursos`),
+        axios.get(`${process.env.REACT_APP_API_URL}/admin/users`),
+      ])
+      .then(
+        axios.spread((cursos, users) => {
+          const cursosArray = cursos.data;
+          const usersArray = users.data;
+          setFormData({
+            ...formData,
+            cursos: cursosArray,
+            users: usersArray,
+          });
+        })
+      )
       .catch((err) => {
         toast.error(`Error To Your Information ${err.response.statusText}`);
       });
   };
+
+  const addUrl = diplomaturas
+    ? "/admin/diplomaturas/nuevo"
+    : "/admin/cursos/nuevo";
+
+  const data = cursos.filter((x) =>
+    diplomaturas ? x.tipo_curso === "diplomatura" : x.tipo_curso === "curso"
+  );
 
   return (
     <div>
       <ToastContainer />
       <Segment>
         <Header as="h2">
-          <Link to="/admin/cursos/nuevo">
+          <Link to={addUrl}>
             <Button floated="right" animated="vertical" positive>
               <Button.Content hidden>Agregar</Button.Content>
               <Button.Content visible>
@@ -312,51 +352,57 @@ function CursosAdmin() {
               </Button.Content>
             </Button>
           </Link>
-          Administrar Cursos
+          {diplomaturas ? "Administrar Diplomaturas" : "Administrar Cursos"}
         </Header>
         <Divider />
         <Container>
           <Item.Group divided>
-            {cursos.map((curso) => (
-              <>
-                <Item>
-                  <Item.Image
-                    src={
-                      curso.imagen ||
-                      "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
-                    }
-                  />
-                  <Item.Content>
-                    <Item.Header as="a">{curso.titulo}</Item.Header>
-                    <Item.Meta>
-                      <span>{curso.fecha}</span>
-                    </Item.Meta>
-                    <Item.Description>{curso.descripcion}</Item.Description>
-                    <Item.Extra>
-                      <Button.Group floated="right">
-                        <Modales curso={curso} />
-                        <EditCurso curso={curso} />
-                        <Confirm curso={curso} />
-                      </Button.Group>
-                      {curso.profesor ? (
-                        <>
-                          <Icon name="user circle" />
-                          {curso.profesor}
-                        </>
-                      ) : null}
+            {data.length ? (
+              data.map((curso) => (
+                <>
+                  <Item>
+                    <Item.Image
+                      src={
+                        curso.imagen ||
+                        "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
+                      }
+                    />
+                    <Item.Content>
+                      <Item.Header as="a">{curso.titulo}</Item.Header>
+                      <Item.Meta>
+                        <span>{curso.fecha}</span>
+                      </Item.Meta>
+                      <Item.Description>{curso.descripcion}</Item.Description>
+                      <Item.Extra>
+                        <Button.Group floated="right">
+                          <VerCurso curso={curso} users={users} />
+                          <EditCurso curso={curso} users={users} />
+                          <DeleteCurso curso={curso} />
+                        </Button.Group>
 
-                      {curso.costo ? (
-                        <>
-                          {" "}
-                          <br />
-                          <Label>{curso.costo}</Label>
-                        </>
-                      ) : null}
-                    </Item.Extra>
-                  </Item.Content>
-                </Item>
-              </>
-            ))}
+                        {curso.costo && (
+                          <>
+                            <br />
+                            <Label>
+                              {" "}
+                              <Icon name="money" /> {curso.costo}
+                            </Label>
+                          </>
+                        )}
+                      </Item.Extra>
+                    </Item.Content>
+                  </Item>
+                </>
+              ))
+            ) : (
+              <NoFound
+                text={
+                  diplomaturas
+                    ? "No se encontraron diplomaturas disponibles"
+                    : "No se encontraron cursos disponibles"
+                }
+              />
+            )}
           </Item.Group>
         </Container>
       </Segment>

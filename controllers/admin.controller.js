@@ -3,9 +3,6 @@ const { validationResult } = require("express-validator");
 // Custom error handler to get useful error from databse errors
 const { errorHandler } = require("../helpers/dbErrorHandling");
 
-// Models
-const Clases = require("../models/clases.model");
-
 // Agregar un usuario con rol
 exports.adminRegisterController = (req, res) => {
   const { name, email, password, role } = req.body;

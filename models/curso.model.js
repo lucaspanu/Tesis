@@ -18,10 +18,16 @@ const cursoSchema = new mongoose.Schema({
   carga_horaria: {
     type: String,
   },
-  profesor: {
+  tipo_curso: {
     type: String,
   },
-  cupos: {
+  profesores: {
+    type: Array,
+  },
+  alumnos: {
+    type: Array,
+  },
+  nro_cuotas: {
     type: Number,
   },
   imagen: {

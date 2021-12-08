@@ -12,7 +12,7 @@ function Error404() {
         {/* Imagen */}
         <img src={ImagenError} alt="Error 404" />
         {/* Texto */}
-        <h1>Pagina No Econtrada</h1>
+        <h1>Pagina No Encontrada</h1>
         <p>Lo sentimos no pudimos encontrar lo que buscas</p>
         <Link to="/">
           <button className="button-volver">Volver</button>

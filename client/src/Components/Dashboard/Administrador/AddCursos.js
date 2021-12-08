@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { Button, Form, Grid, Header, Segment } from "semantic-ui-react";
@@ -6,31 +6,60 @@ import { isAuth } from "../../../helpers/auth";
 import { Redirect } from "react-router-dom";
 import FileBase from "react-file-base64";
 
-function AddCursos() {
+function AddCursos({ diplomatura }) {
   const [formData, setFormData] = useState({
     titulo: "",
     descripcion: "",
     fecha: "",
     costo: "",
     carga_horaria: "",
-    profesor: "",
-    cupos: "",
+    tipo_curso: diplomatura ? "diplomatura" : "curso",
+    profesores: [],
+    alumnos: [],
+    nro_cuotas: "",
     imagen: "",
+    users: [],
   });
 
   const {
     titulo,
     descripcion,
     fecha,
-    cupos,
+    nro_cuotas,
     costo,
     carga_horaria,
-    profesor,
+    tipo_curso,
+    profesores,
+    alumnos,
     imagen,
+    users,
   } = formData;
+
+  //Carga de Datos
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  const loadData = () => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/admin/users`)
+      .then((res) => {
+        setFormData({
+          ...formData,
+          users: res.data,
+        });
+      })
+      .catch((err) => {
+        toast.error(`Error To Your Information ${err.response.statusText}`);
+      });
+  };
+
   //Handle change from inputs
   const handleChange = (text) => (e) => {
     setFormData({ ...formData, [text]: e.target.value });
+  };
+  const handleProfesoresChange = (text) => (e, data) => {
+    setFormData({ ...formData, [text]: data.value });
   };
 
   //submit data to backend
@@ -43,10 +72,12 @@ function AddCursos() {
           titulo,
           descripcion,
           fecha,
-          cupos,
+          nro_cuotas,
           costo,
           carga_horaria,
-          profesor,
+          tipo_curso,
+          profesores,
+          alumnos,
           imagen,
         })
         .then((res) => {
@@ -57,8 +88,8 @@ function AddCursos() {
             fecha: "",
             costo: "",
             carga_horaria: "",
-            profesor: "",
-            cupos: "",
+            profesores: [],
+            nro_cuotas: "",
             imagen: "",
           });
 
@@ -72,8 +103,8 @@ function AddCursos() {
             fecha: "",
             costo: "",
             carga_horaria: "",
-            profesor: "",
-            cupos: "",
+            profesores: [],
+            nro_cuotas: "",
             imagen: "",
           });
           console.log(err.response);
@@ -83,6 +114,17 @@ function AddCursos() {
       toast.error("Por favor agrega un titulo y una descripcion");
     }
   };
+
+  const options = users
+    .filter((x) => x.role === "Profesor")
+    .map((x) => ({
+      key: x._id,
+      text: x.name,
+      value: x._id,
+    }));
+
+  const title = diplomatura ? " AGREGAR DIPLOMATURA" : " AGREGAR CURSO";
+
   return (
     <div>
       {isAuth().role === "admin" ? null : <Redirect to="/private" />}
@@ -94,7 +136,7 @@ function AddCursos() {
       >
         <Grid.Column style={{ maxWidth: 680 }}>
           <Header as="h2" color="teal" textAlign="center">
-            AGREGAR CURSOS
+            {title}
           </Header>
           <Form onSubmit={handleSubmit}>
             <Segment stacked>
@@ -119,14 +161,15 @@ function AddCursos() {
                   onChange={handleChange("fecha")}
                   value={fecha}
                 />
-                <Form.Input
+                <Form.Dropdown
                   fluid
-                  icon="usd"
-                  iconPosition="left"
-                  type="number"
-                  label="Costo"
-                  onChange={handleChange("costo")}
-                  value={costo}
+                  multiple
+                  search
+                  selection
+                  label="Profesores"
+                  onChange={handleProfesoresChange("profesores")}
+                  value={profesores}
+                  options={options}
                 />
               </Form.Group>
               <Form.Group widths="equal">
@@ -139,17 +182,20 @@ function AddCursos() {
                 />
                 <Form.Input
                   fluid
-                  type="text"
-                  label="Cupos"
-                  onChange={handleChange("cupos")}
-                  value={cupos}
+                  icon="usd"
+                  iconPosition="left"
+                  type="number"
+                  label="Costo"
+                  onChange={handleChange("costo")}
+                  value={costo}
                 />
+
                 <Form.Input
                   fluid
-                  type="text"
-                  label="Profesor acargo"
-                  onChange={handleChange("profesor")}
-                  value={profesor}
+                  type="number"
+                  label="Numero de Cuotas"
+                  onChange={handleChange("nro_cuotas")}
+                  value={nro_cuotas}
                 />
               </Form.Group>
               <Form.Input fluid label="Imagen">

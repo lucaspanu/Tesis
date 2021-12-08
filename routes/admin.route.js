@@ -9,7 +9,6 @@ const Usuarios = require("../models/auth.model");
 //agregar un nuevo administrador
 router.post("/admin/new", validRegister, adminRegisterController);
 
-//Clases
 // READ (ALL)
 router.get("/admin/users", (req, res) => {
   const { perfil } = req.body;

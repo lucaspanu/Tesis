@@ -68,12 +68,6 @@ function NavBarDashboard() {
               <Menu.Header>Administrativo</Menu.Header>
 
               <Menu.Menu>
-                {/* <Menu.Item as={Link} to="#">
-              <div>
-                <Icon name="cogs " />
-                Settings
-              </div>
-            </Menu.Item> */}
                 <Menu.Item as={Link} to="/admin">
                   <div>
                     <Icon name="users" />
@@ -108,6 +102,12 @@ function NavBarDashboard() {
                   <div>
                     <Icon name="signup" />
                     Cuotas
+                  </div>
+                </Menu.Item>
+                <Menu.Item as={Link} to="/admin/inscripciones">
+                  <div>
+                    <Icon name="signup" />
+                    Inscripciones
                   </div>
                 </Menu.Item>
               </Menu.Menu>
@@ -145,7 +145,7 @@ function NavBarDashboard() {
                 <Popup
                   content="Completa la ficha de inscripcion para acceder a los cursos"
                   trigger={
-                    <Menu.Item as={Link} to="/perfil" disabled>
+                    <Menu.Item as={Link} to="/perfil">
                       <div>
                         <Icon name="book" />
                         Cursos
@@ -156,7 +156,7 @@ function NavBarDashboard() {
                 <Popup
                   content="Completa la ficha de inscripcion para acceder a las diplomaturas"
                   trigger={
-                    <Menu.Item as={Link} to="/perfil" disabled>
+                    <Menu.Item as={Link} to="/perfil">
                       <div>
                         <Icon name="book" flipped="horizontally" />
                         Diplomaturas
@@ -215,9 +215,6 @@ function NavBarDashboard() {
           </Menu.Item>
         </Menu.Menu>
         <Menu.Menu position="right">
-          <Menu.Item as={Link} to="#">
-            <Icon name="bell" />
-          </Menu.Item>
           <Dropdown icon="user" pointing className="link item">
             <Dropdown.Menu>
               <Dropdown.Header>{isAuth().name}</Dropdown.Header>

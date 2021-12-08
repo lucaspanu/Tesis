@@ -4,7 +4,6 @@ import {
   Card,
   Container,
   Divider,
-  Grid,
   Header,
   Icon,
   Image,
@@ -13,7 +12,6 @@ import {
 import card1 from "../../Assets/Image/Card/card1.jpg";
 import card2 from "../../Assets/Image/Card/card2.jpg";
 import card3 from "../../Assets/Image/Card/card3.jpg";
-import card4 from "../../Assets/Image/Card/card4.jpg";
 
 function DiplomaturasHome() {
   return (
@@ -22,7 +20,7 @@ function DiplomaturasHome() {
       <Divider hidden />
       <Card.Group stackable itemsPerRow="3">
         <Card>
-          <Image src={card2} wrapped ui={false} />
+          <Image src={card1} wrapped ui={false} />
           <Card.Content>
             {/* <Card.Header>Titulo</Card.Header> */}
             <Card.Meta>
@@ -60,7 +58,7 @@ function DiplomaturasHome() {
           </Card.Content>
         </Card>
         <Card>
-          <Image src={card2} wrapped ui={false} />
+          <Image src={card3} wrapped ui={false} />
           <Card.Content>
             {/* <Card.Header>Titulo</Card.Header> */}
             <Card.Meta>

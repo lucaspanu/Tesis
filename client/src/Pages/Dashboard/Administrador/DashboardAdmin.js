@@ -39,7 +39,7 @@ function DashboardAdmin() {
           <Statistic color="teal">
             <Statistic.Value>
               {" "}
-              {users.filter((x) => x.role == "Usuario").length}
+              {users.filter((x) => x.role === "Usuario").length}
             </Statistic.Value>
             <Statistic.Label>Usuarios</Statistic.Label>
           </Statistic>
@@ -48,7 +48,7 @@ function DashboardAdmin() {
           <Statistic color="blue">
             <Statistic.Value>
               {" "}
-              {users.filter((x) => x.role == "profesor").length}
+              {users.filter((x) => x.role === "profesor").length}
             </Statistic.Value>
             <Statistic.Label>Profesores</Statistic.Label>
           </Statistic>
@@ -57,7 +57,7 @@ function DashboardAdmin() {
           <Statistic color="red">
             <Statistic.Value>
               {" "}
-              {users.filter((x) => x.role == "admin").length}
+              {users.filter((x) => x.role === "admin").length}
             </Statistic.Value>
             <Statistic.Label>Administradores</Statistic.Label>
           </Statistic>
