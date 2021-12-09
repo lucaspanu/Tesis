@@ -10,8 +10,6 @@ import {
   Image,
 } from "semantic-ui-react";
 
-import card1 from "../../Assets/Image/Card/card1.jpg";
-
 function CursosHome() {
   const [formData, setFormData] = useState({
     cursos: [],

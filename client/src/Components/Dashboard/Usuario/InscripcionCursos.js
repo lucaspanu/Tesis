@@ -58,8 +58,13 @@ function InscripcionCursos({ diplomaturas }) {
   };
 
   const isInscripto = (cursoId) => {
-    return inscripciones.some(
-      (x) => x.id_alumno === isAuth()._id && x.id_curso === cursoId
+    return (
+      inscripciones.some(
+        (x) => x.id_alumno === isAuth()._id && x.id_curso === cursoId
+      ) ||
+      cursos
+        .find((x) => x._id === cursoId)
+        .alumnos.some((x) => x === isAuth()._id)
     );
   };
 
@@ -103,9 +108,7 @@ function InscripcionCursos({ diplomaturas }) {
                             onClick={() => handleSubmit(curso._id)}
                             disabled={isInscripto(curso._id)}
                           >
-                            {isInscripto(curso._id)
-                              ? "Solicitud Pendiente..."
-                              : "Solicitar Adminision"}
+                            Solicitar Adminision
                           </Button>
                         </Button.Group>
                       </Card.Content>

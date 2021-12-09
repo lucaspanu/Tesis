@@ -3,22 +3,16 @@ import { Button, Container, Divider, Header, Segment } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import CursosHome from "./CursosHome";
 import DiplomaturasHome from "./DiplomaturasHome";
+import EspecializacionesHome from "./EspecializacionesHome";
 
 function Body() {
   return (
     <div>
-      <Segment style={{ padding: "6em 0em" }} vertical>
+      <Segment style={{ padding: "5em 0em" }} vertical>
         {/* Cursos */}
         <Container>
-          <CursosHome />
+          <EspecializacionesHome />
         </Container>
-      </Segment>
-
-      <Segment style={{ padding: "5em 0em" }} vertical>
-        <Container>
-          <DiplomaturasHome />
-        </Container>
-        {/* Diplomaturas */}
       </Segment>
 
       <Segment style={{ padding: "8em 0em" }} vertical>

@@ -33,6 +33,7 @@ import DashboardAddDiplomatura from "./Pages/Dashboard/Administrador/DashboardAd
 import DashboardNewUser from "./Pages/Dashboard/Administrador/DashboardNewUser";
 import DashboardAdminUsers from "./Pages/Dashboard/Administrador/DashboardAdminUsers";
 import DashboardInscrpDiplomaturas from "./Pages/Dashboard/Usuario/DashboardInscrpDiplomaturas";
+import DashboardInscripciones from "./Pages/Dashboard/Administrador/DashboardInscripciones";
 
 function App() {
   return (
@@ -123,6 +124,11 @@ function App() {
             path="/admin/diplomaturas"
             exact
             component={DashboardDiplomaturas}
+          />
+          <AdminRoute
+            path="/admin/inscripciones"
+            exact
+            component={DashboardInscripciones}
           />
           {/* --------------------- */}
           {/* Pagina no encontrada */}
