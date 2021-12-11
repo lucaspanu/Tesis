@@ -34,6 +34,8 @@ import DashboardNewUser from "./Pages/Dashboard/Administrador/DashboardNewUser";
 import DashboardAdminUsers from "./Pages/Dashboard/Administrador/DashboardAdminUsers";
 import DashboardInscrpDiplomaturas from "./Pages/Dashboard/Usuario/DashboardInscrpDiplomaturas";
 import DashboardInscripciones from "./Pages/Dashboard/Administrador/DashboardInscripciones";
+import DashboardAsistencias from "./Pages/Dashboard/Profesor/DashboardAsistencias";
+import DashboardCuotas from "./Pages/Dashboard/Administrador/DashboardCuotas";
 
 function App() {
   return (
@@ -102,6 +104,11 @@ function App() {
             exact
             component={DashboardInscrpDiplomaturas}
           />
+          <PrivateRoute
+            path="/admin/asistencias"
+            exact
+            component={DashboardAsistencias}
+          />
           {/* ADMINISTRADOR */}
           <AdminRoute
             path="/admin/cursos"
@@ -125,6 +132,7 @@ function App() {
             exact
             component={DashboardDiplomaturas}
           />
+          <AdminRoute path="/admin/cuotas" exact component={DashboardCuotas} />
           <AdminRoute
             path="/admin/inscripciones"
             exact

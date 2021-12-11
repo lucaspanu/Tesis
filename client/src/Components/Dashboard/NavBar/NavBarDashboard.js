@@ -15,6 +15,7 @@ function NavBarDashboard() {
   //Carga de Datos
   useEffect(() => {
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadData = () => {
@@ -32,6 +33,9 @@ function NavBarDashboard() {
         console.log(err);
       });
   };
+
+  const isAdmin = isAuth().role === "admin";
+  const isProfesor = isAuth().role === "Profesor";
 
   return (
     <div>
@@ -62,54 +66,63 @@ function NavBarDashboard() {
             </Menu.Item>
           </Menu.Menu>
         </Menu.Item>
-        {isAuth().role === "admin" && (
+        {(isAdmin || isProfesor) && (
           <Fragment>
             <Menu.Item>
               <Menu.Header>Administrativo</Menu.Header>
-
               <Menu.Menu>
-                <Menu.Item as={Link} to="/admin">
-                  <div>
-                    <Icon name="users" />
-                    Usuarios
-                  </div>
-                </Menu.Item>
-                <Menu.Item as={Link} to="/admin/nuevo">
-                  <div>
-                    <Icon name="user plus" />
-                    Nuevo Usuario
-                  </div>
-                </Menu.Item>
-                <Menu.Item as={Link} to="/admin/cursos">
-                  <div>
-                    <Icon name="plus" />
-                    Cursos
-                  </div>
-                </Menu.Item>
-                <Menu.Item as={Link} to="/admin/diplomaturas">
-                  <div>
-                    <Icon name="plus" />
-                    Diplomaturas
-                  </div>
-                </Menu.Item>
-                <Menu.Item as={Link} to="/admin/asistencias">
-                  <div>
-                    <Icon name="signup" />
-                    Asistencias
-                  </div>
-                </Menu.Item>
-                <Menu.Item as={Link} to="/admin/cuotas">
-                  <div>
-                    <Icon name="signup" />
-                    Cuotas
-                  </div>
-                </Menu.Item>
-                <Menu.Item as={Link} to="/admin/inscripciones">
-                  <div>
-                    <Icon name="signup" />
-                    Inscripciones
-                  </div>
-                </Menu.Item>
+                {isAdmin && (
+                  <>
+                    <Menu.Item as={Link} to="/admin">
+                      <div>
+                        <Icon name="users" />
+                        Usuarios
+                      </div>
+                    </Menu.Item>
+                    <Menu.Item as={Link} to="/admin/nuevo">
+                      <div>
+                        <Icon name="user plus" />
+                        Nuevo Usuario
+                      </div>
+                    </Menu.Item>
+                    <Menu.Item as={Link} to="/admin/cursos">
+                      <div>
+                        <Icon name="plus" />
+                        Cursos
+                      </div>
+                    </Menu.Item>
+                    <Menu.Item as={Link} to="/admin/diplomaturas">
+                      <div>
+                        <Icon name="plus" />
+                        Diplomaturas
+                      </div>
+                    </Menu.Item>
+                  </>
+                )}
+                {(isAdmin || isProfesor) && (
+                  <Menu.Item as={Link} to="/admin/asistencias">
+                    <div>
+                      <Icon name="signup" />
+                      Asistencias
+                    </div>
+                  </Menu.Item>
+                )}
+                {isAdmin && (
+                  <>
+                    <Menu.Item as={Link} to="/admin/cuotas">
+                      <div>
+                        <Icon name="signup" />
+                        Cuotas
+                      </div>
+                    </Menu.Item>
+                    <Menu.Item as={Link} to="/admin/inscripciones">
+                      <div>
+                        <Icon name="signup" />
+                        Inscripciones
+                      </div>
+                    </Menu.Item>
+                  </>
+                )}
               </Menu.Menu>
             </Menu.Item>
           </Fragment>
@@ -182,6 +195,7 @@ function NavBarDashboard() {
               <a
                 href="https://www.facebook.com/profile.php?id=100005949195316"
                 target="_blank"
+                rel="noreferrer"
               >
                 <Icon name="facebook f" />
                 Facebook
@@ -191,6 +205,7 @@ function NavBarDashboard() {
               <a
                 href="https://www.instagram.com/posgradosderechount/"
                 target="_blank"
+                rel="noreferrer"
               >
                 <Icon name="instagram" />
                 Instagram

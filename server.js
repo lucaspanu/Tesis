@@ -38,6 +38,8 @@ const adminRouter = require("./routes/admin.route");
 const cursosRouter = require("./routes/cursos.route");
 const inscripcionesRouter = require("./routes/inscripciones.route");
 const perfilRouter = require("./routes/perfil.route");
+const asistenciasRouter = require("./routes/asistencias.route");
+const cuotasRouter = require("./routes/cuotas.route");
 
 // Use Routes
 app.use("/api", authRouter);
@@ -46,6 +48,8 @@ app.use("/api", adminRouter);
 app.use("/api", cursosRouter);
 app.use("/api", inscripcionesRouter);
 app.use("/api", perfilRouter);
+app.use("/api", asistenciasRouter);
+app.use("/api", cuotasRouter);
 
 app.use((req, res) => {
   res.status(404).json({
