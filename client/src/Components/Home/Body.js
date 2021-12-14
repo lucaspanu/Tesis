@@ -1,8 +1,6 @@
 import React from "react";
 import { Button, Container, Divider, Header, Segment } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import CursosHome from "./CursosHome";
-import DiplomaturasHome from "./DiplomaturasHome";
 import EspecializacionesHome from "./EspecializacionesHome";
 
 function Body() {

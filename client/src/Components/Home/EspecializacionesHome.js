@@ -21,7 +21,13 @@ function EspecializacionesHome() {
       <Divider hidden />
       <Card.Group stackable itemsPerRow="4">
         <Card>
-          <Image src={DerechoAdministrativo} wrapped ui={false} />
+          <Image
+            src={DerechoAdministrativo}
+            size="small"
+            wrapped
+            ui={false}
+            style={{ height: "180px", display: "flex" }}
+          />
           <Card.Content>
             <Card.Header>Derecho Administrativo</Card.Header>
             <Card.Meta>
@@ -40,7 +46,13 @@ function EspecializacionesHome() {
           </Card.Content>
         </Card>
         <Card>
-          <Image src={DerechoAmbiental} wrapped ui={false} />
+          <Image
+            src={DerechoAmbiental}
+            size="small"
+            wrapped
+            ui={false}
+            style={{ height: "180px", display: "flex" }}
+          />
           <Card.Content>
             <Card.Header>Derecho Ambiental</Card.Header>
             <Card.Meta>
@@ -59,7 +71,13 @@ function EspecializacionesHome() {
           </Card.Content>
         </Card>
         <Card>
-          <Image src={DerechoDanos} wrapped ui={false} />
+          <Image
+            src={DerechoDanos}
+            size="small"
+            wrapped
+            ui={false}
+            style={{ height: "180px", display: "flex" }}
+          />
           <Card.Content>
             <Card.Header>Derecho de Daños</Card.Header>
             <Card.Meta>
@@ -78,7 +96,13 @@ function EspecializacionesHome() {
           </Card.Content>
         </Card>
         <Card>
-          <Image src={DerechoPenal} wrapped ui={false} />
+          <Image
+            src={DerechoPenal}
+            size="small"
+            wrapped
+            ui={false}
+            style={{ height: "180px", display: "flex" }}
+          />
           <Card.Content>
             <Card.Header>Derecho Penal</Card.Header>
             <Card.Meta>

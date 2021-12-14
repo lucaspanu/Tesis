@@ -134,8 +134,9 @@ function CursosList() {
       </Segment>
 
       <Header as="h2" content="Nuestro Cursos" textAlign="center" />
-      <Divider hidden />
       <Container style={{ minHeight: "60vh" }}>
+        <Divider hidden />
+        <Divider />
         <Item.Group divided>
           {data.length ? (
             data.map((curso) => (
@@ -171,11 +172,7 @@ function CursosList() {
             ))
           ) : (
             <>
-              <Divider hidden />
-              <NoFound
-                basic={false}
-                text={"No se encontraron cursos disponibles"}
-              />
+              <NoFound text={"No se encontraron cursos disponibles"} />
             </>
           )}
         </Item.Group>
