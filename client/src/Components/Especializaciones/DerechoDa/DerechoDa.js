@@ -25,28 +25,27 @@ const panes = [
     render: () => (
       <Tab.Pane>
         <p style={{ fontSize: "1.1em" }}>
-          Como fundamentos de creación de la carrera de posgrado Especialización
-          en Derecho Administrativo, se tuvo en cuenta el proceso de
-          transformación social e institucional operado en los últimos años que
-          ha determinado que tanto el Estado como las empresas públicas y
-          privadas, así como los ciudadanos mismos, hayan debido asumir nuevos
-          roles, tales como el de usuarios de servicios públicos, partícipes de
-          procedimientos de audiencias públicas o integrantes de asociaciones
-          que protegen los nuevos derechos de incidencia colectiva. Las
-          innumerables cuestiones que se suscitan como consecuencia de tales
-          cambios exigen la presencia de abogados con alta capacitación en
-          Derecho Administrativo.
+          Esta propuesta de posgrado es en respuesta a la necesidad planteada
+          por numerosos miembros de la comunidad jurídica de la región, quienes
+          han demandado a esta Casa de Altos Estudios la continuidad en la
+          formación de esta área disciplinar del derecho. En sus inicios, el no
+          contar con masa crítica suficiente constituyó un obstáculo para
+          satisfacer con los estándares exigidos por la CONEAU. Por tal motivo,
+          se celebró, entre la Universidad Nacional del Litoral y la Universidad
+          Nacional de Tucumán, el “Convenio Marco de Cooperación Científica y
+          Cultural” (Resolución Nº 282-977), un “Acuerdo de Colaboración”, de
+          fecha 2 de Agosto de 2000, y un convenio específico de cooperación
+          académica del año 2008 convalidado por Resolución del Rector N°
+          0555/2010, entre ambas Universidades. Bajo ese complejo reglamentario,
+          se posibilitó el dictado en nuestra Casa de Estudios, de la Carrera de
+          Especialización en Derecho de Daños de la Facultad de Ciencias
+          Jurídicas y Sociales de la Universidad Nacional del Litoral.
         </p>
         <br />
         <p style={{ fontSize: "1.1em" }}>
-          Atendiendo a tales circunstancias, se creó la Carrera de
-          Especialización en Derecho Administrativo, concebida con el propósito
-          de formar a los abogados graduados de una sólida formación –teórica y
-          práctica- que les permita resolver, con justicia y eficiencia, los
-          diferentes problemas que se les presenten en la actividad profesional,
-          sea que la desarrollen en los diversos órganos de la Administración
-          Central y Descentralizada, en el sector privado, o en el ámbito de la
-          Legislación o la Justicia.
+          Actualmente se da cumplimiento con la Resolución Ministerial N°
+          160/2011 que aprueba los estándares y criterios a tenerse cuenta en
+          los procesos de acreditación de carreras de posgrado.
         </p>
         <DAPreguntas />
       </Tab.Pane>
@@ -66,72 +65,24 @@ const panes = [
       <Tab.Pane>
         <Header as="h3">Cuerpo Docente</Header>
         <p style={{ fontSize: "1em" }}>
-          ALEJANDRO USLENGHI - UBA – UCA – UNIV. AUSTRAL <br />
-          MARÍA SUSANA VILLARRUEL - UCA
           <br />
-          JUAN GALEANO - UCA
+          Segui, Adela Maria
           <br />
-          ADELINA LOIANNO – UBA – U.C.E Y S<br />
-          OSCAR FLORES – UNT
+          López Herrera, Edgardo Santiago
           <br />
-          MARÍO REJTMAN FARAH – UBA
+          Hael De Mauvecin, Juana Inés Ines
           <br />
-          CARLOS BALBIN - UBA
+          Japaze, María Belén
           <br />
-          JUAN STUPENENGO – UBA – UNIV. LA MATANZA
+          Mercado, Pablo Martín Martín
           <br />
-          PABLO ÁNGEL GUTIÉRREZ COLANTUONO - UNIV. NAC. COMAHUE
+          Nacul, Marìa Sofia
           <br />
-          FLORENCIA CASAS - UNT
+          Madkur, Hector Horacio
           <br />
-          AUGUSTO GONZALEZ NAVARRO - UNT
+          David De Martínez Zuccardi, Laura Alcira
           <br />
-          PABLO MARTIN MERCADO - UNT
-          <br />
-          FERNANDO GARCÍA PULLÉS – UBA – UCA – UNIV. AUSTRAL
-          <br />
-          RODOLFO N. NOVILLO - UNT
-          <br />
-          BLANCA HERRERA DE VILLAVICENCIO - UNT
-          <br />
-          MARÍA PAMELA TENREYRO- UNT
-          <br />
-          DANTE MIRRA - UNT
-          <br />
-          MIRIAM IVANEGA – UBA – U.N. DE LA MATANZA
-          <br />
-          FEDERICO NAZUR - UNT
-          <br />
-          DANIEL NALLAR - – UNIV. CATOLICA DE SALTA
-          <br />
-          LUIS ALFREDO LÓPEZ - UNT
-          <br />
-          SUSANA VEGA - UBA
-          <br />
-          MARÍA ROTAECHE - UBA
-          <br />
-          FERNANDO E. GRANEROS – UNT
-          <br />
-          JUAN G. CORVALÁN – UBA
-          <br />
-          ANA DE LA VEGA DE DÍAZ RICCI – UNT - UNSTA
-          <br />
-          OSCAR AGUILAR VALDÉZ – UBA - UCA
-          <br />
-          HERNAN PÉREZ BOIANI - UBA
-          <br />
-          ROBERTO SOBRE CASAS - UNT
-          <br />
-          LUIS ESTEBAN CARO - UNT
-          <br />
-          CYNTHIA PAOLA GONZALEZ
-          <br />
-          MARTA YOLANDA TEJERIZO – UNT
-          <br />
-          MARÍA ELENA CABALLERO - UNT
-          <br />
-          LUCIANA ESPASA - UNT
-          <br />
+          Schmieloz, Graciela Elizabeth
         </p>
       </Tab.Pane>
     ),
@@ -189,17 +140,17 @@ export default class DerechoDa extends Component {
                     <Image src={imagen} wrapped ui={false} />
                     <Card.Content>
                       <Card.Description>
-                        <Icon name="clock" /> Carga horaria: 536 hs. <br />
-                        <Icon name="user" /> Directora: Dra. Blanca Herrera de
-                        Villavicencio <br />
-                        <Icon name="user outline" /> Co-director: Dr. Augusto
-                        Gonzalez Navarro <br />
+                        <Icon name="clock" /> Duración: 2 años - 380 hs.
+                        académicas. <br />
+                        <Icon name="user" /> Dirección: Adela Seguí <br />
+                        <Icon name="user outline" /> Co- Dirección: José
+                        Humberto Sahián <br />
                         <Icon name="balance scale" /> Titulo: Especialización en
                         Derecho de Daños
                       </Card.Description>
                     </Card.Content>
                     <Card.Content extra>
-                      <a>Res. N° 815/15</a>
+                      <a>Res. N° 482/15</a>
                     </Card.Content>
                   </Card>
                 </Grid.Column>

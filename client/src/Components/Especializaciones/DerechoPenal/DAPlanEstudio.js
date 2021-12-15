@@ -23,76 +23,16 @@ export default class DAPlanEstudio extends Component {
           onClick={this.handleClick}
         >
           <Icon name="dropdown" />
-          PRIMER CUATRIMESTRE
+          MATERIAS:
         </Accordion.Title>
         <Accordion.Content active={activeIndex === 0}>
           <List.List as="ul">
-            <List.Item as="li">
-              Derecho Administrativo (principios y fuentes)
-            </List.Item>
-            <List.Item as="li">El Método en Derecho Administrativo</List.Item>
-            <List.Item as="li">Administración y Constitución</List.Item>
-            <List.Item as="li">Organización Administrativa</List.Item>
-            <List.Item as="li">Acto Administrativo</List.Item>
-          </List.List>
-        </Accordion.Content>
-
-        <Accordion.Title
-          active={activeIndex === 1}
-          index={1}
-          onClick={this.handleClick}
-        >
-          <Icon name="dropdown" />
-          SEGUNDO CUATRIMESTRE
-        </Accordion.Title>
-        <Accordion.Content active={activeIndex === 1}>
-          <List.List as="ul">
-            <List.Item as="li">
-              Derecho Administrativo (principios y fuentes)
-            </List.Item>
-            <List.Item as="li">El Método en Derecho Administrativo</List.Item>
-            <List.Item as="li">Administración y Constitución</List.Item>
-            <List.Item as="li">Organización Administrativa</List.Item>
-            <List.Item as="li">Acto Administrativo</List.Item>
-          </List.List>
-        </Accordion.Content>
-
-        <Accordion.Title
-          active={activeIndex === 2}
-          index={2}
-          onClick={this.handleClick}
-        >
-          <Icon name="dropdown" />
-          TERCER CUATRIMESTRE
-        </Accordion.Title>
-        <Accordion.Content active={activeIndex === 2}>
-          <List.List as="ul">
-            <List.Item as="li">
-              Derecho Administrativo (principios y fuentes)
-            </List.Item>
-            <List.Item as="li">El Método en Derecho Administrativo</List.Item>
-            <List.Item as="li">Administración y Constitución</List.Item>
-            <List.Item as="li">Organización Administrativa</List.Item>
-            <List.Item as="li">Acto Administrativo</List.Item>
-          </List.List>
-        </Accordion.Content>
-        <Accordion.Title
-          active={activeIndex === 3}
-          index={3}
-          onClick={this.handleClick}
-        >
-          <Icon name="dropdown" />
-          CUARTO CUATRIMESTRE
-        </Accordion.Title>
-        <Accordion.Content active={activeIndex === 3}>
-          <List.List as="ul">
-            <List.Item as="li">
-              Derecho Administrativo (principios y fuentes)
-            </List.Item>
-            <List.Item as="li">El Método en Derecho Administrativo</List.Item>
-            <List.Item as="li">Administración y Constitución</List.Item>
-            <List.Item as="li">Organización Administrativa</List.Item>
-            <List.Item as="li">Acto Administrativo</List.Item>
+            <List.Item as="li">De las penas</List.Item>
+            <List.Item as="li">Derecho penal especial. Código Penal.</List.Item>
+            <List.Item as="li">Fundamentos del sistema penal</List.Item>
+            <List.Item as="li">Teoría del delito 1</List.Item>
+            <List.Item as="li">Teoría del delito 2</List.Item>
+            <List.Item as="li">Teoría del delito 3</List.Item>
           </List.List>
         </Accordion.Content>
       </Accordion>

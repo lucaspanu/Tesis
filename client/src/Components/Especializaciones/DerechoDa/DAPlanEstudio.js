@@ -17,82 +17,41 @@ export default class DAPlanEstudio extends Component {
 
     return (
       <Accordion fluid styled>
-        <Accordion.Title
-          active={activeIndex === 0}
-          index={0}
-          onClick={this.handleClick}
-        >
-          <Icon name="dropdown" />
-          PRIMER CUATRIMESTRE
-        </Accordion.Title>
         <Accordion.Content active={activeIndex === 0}>
           <List.List as="ul">
             <List.Item as="li">
-              Derecho Administrativo (principios y fuentes)
+              Concepción actual del Derecho de Daños
             </List.Item>
-            <List.Item as="li">El Método en Derecho Administrativo</List.Item>
-            <List.Item as="li">Administración y Constitución</List.Item>
-            <List.Item as="li">Organización Administrativa</List.Item>
-            <List.Item as="li">Acto Administrativo</List.Item>
-          </List.List>
-        </Accordion.Content>
-
-        <Accordion.Title
-          active={activeIndex === 1}
-          index={1}
-          onClick={this.handleClick}
-        >
-          <Icon name="dropdown" />
-          SEGUNDO CUATRIMESTRE
-        </Accordion.Title>
-        <Accordion.Content active={activeIndex === 1}>
-          <List.List as="ul">
             <List.Item as="li">
-              Derecho Administrativo (principios y fuentes)
+              Contratos y daños. El seguro de responsabilidad civil.
             </List.Item>
-            <List.Item as="li">El Método en Derecho Administrativo</List.Item>
-            <List.Item as="li">Administración y Constitución</List.Item>
-            <List.Item as="li">Organización Administrativa</List.Item>
-            <List.Item as="li">Acto Administrativo</List.Item>
-          </List.List>
-        </Accordion.Content>
-
-        <Accordion.Title
-          active={activeIndex === 2}
-          index={2}
-          onClick={this.handleClick}
-        >
-          <Icon name="dropdown" />
-          TERCER CUATRIMESTRE
-        </Accordion.Title>
-        <Accordion.Content active={activeIndex === 2}>
-          <List.List as="ul">
             <List.Item as="li">
-              Derecho Administrativo (principios y fuentes)
+              Dimensión procesal de la responsabilidad por daños
             </List.Item>
-            <List.Item as="li">El Método en Derecho Administrativo</List.Item>
-            <List.Item as="li">Administración y Constitución</List.Item>
-            <List.Item as="li">Organización Administrativa</List.Item>
-            <List.Item as="li">Acto Administrativo</List.Item>
-          </List.List>
-        </Accordion.Content>
-        <Accordion.Title
-          active={activeIndex === 3}
-          index={3}
-          onClick={this.handleClick}
-        >
-          <Icon name="dropdown" />
-          CUARTO CUATRIMESTRE
-        </Accordion.Title>
-        <Accordion.Content active={activeIndex === 3}>
-          <List.List as="ul">
             <List.Item as="li">
-              Derecho Administrativo (principios y fuentes)
+              Otros supuestos especiales de responsabilidad
             </List.Item>
-            <List.Item as="li">El Método en Derecho Administrativo</List.Item>
-            <List.Item as="li">Administración y Constitución</List.Item>
-            <List.Item as="li">Organización Administrativa</List.Item>
-            <List.Item as="li">Acto Administrativo</List.Item>
+            <List.Item as="li">
+              La responsabilidad civil en el nuevo Código Civil y Comercial
+            </List.Item>
+            <List.Item as="li">Responsabilidad de los profesionales</List.Item>
+            <List.Item as="li">
+              Responsabilidad derivada de accidentes (tránsito, transporte,
+              establecimientos educativos, deporte)
+            </List.Item>
+            <List.Item as="li">
+              Responsabilidad en el ámbito de la empresa y el mercado
+            </List.Item>
+            <List.Item as="li">
+              Responsabilidad en el Derecho del Consumidor
+            </List.Item>
+            <List.Item as="li">
+              Responsabilidad por daño ambiental y de otros bienes colectivos
+            </List.Item>
+            <List.Item as="li">
+              Teoría general y elementos de la Responsabilidad Civil.
+            </List.Item>
+            <List.Item as="li">Valuación del daño</List.Item>
           </List.List>
         </Accordion.Content>
       </Accordion>

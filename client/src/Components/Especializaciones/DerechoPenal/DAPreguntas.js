@@ -28,34 +28,37 @@ export default class DAPreguntas extends Component {
         <Accordion.Content active={activeIndex === 0}>
           <List>
             <List.Item as="li">
-              <b>Generales:</b>
               <List.List as="ul">
                 <List.Item as="li">
-                  Que la propuesta contribuya a la excelencia académica de la
-                  U.N.T.
+                  Profundizar la formación cultural de profesionales en materia
+                  de Derecho Penal, cuya actividad esta directa o indirectamente
+                  relacionada con los contenidos de la misma.
                 </List.Item>
+                <br></br>
                 <List.Item as="li">
-                  Que se dinamice y potencie la formación de posgrado.
+                  Lograr un mayor conocimiento técnico científico debidamente
+                  actualizado de la materia, enriqueciendo el andamiaje teórico
+                  con las nuevas propuestas y alternativas que se difunden
+                  actualmente en la materia.
                 </List.Item>
+                <br></br>
                 <List.Item as="li">
-                  Que la formación obtenida se transfiera a la docencia de grado
-                  y, especialmente, constituya un aporte al proceso de
-                  transformación curricular con el que la Facultad está
-                  comprometida.
+                  Posibilitar la aplicación concreta del conocimiento
+                  especializado en las actividades profesionales que desarrollen
+                  los graduados.
                 </List.Item>
-              </List.List>
-            </List.Item>
-            <List.Item as="li">
-              <b>Específicos:</b>
-              <List.List as="ul">
+                <br></br>
                 <List.Item as="li">
-                  Tiene como objetivo dotar a los abogados de una formación
-                  teórica-práctica en Derecho Administrativo, que les permita la
-                  aplicación concreta del conocimiento especializado en las
-                  actividades profesionales que desarrollen los graduados, sea
-                  que la desarrollen en los diversos órganos de la
-                  Administración Central y Descentralizada, en el sector
-                  privado, o en el ámbito de la Legislación o la Justicia.
+                  Destacar la importancia del problema penal en la elaboración
+                  de leyes penales, en la concreta solución de casos sometidos a
+                  enjuiciamiento, en el tratamiento de los condenados y en toda
+                  otra actividad profesional que se vincule con la materia.
+                </List.Item>
+                <br></br>
+                <List.Item as="li">
+                  Brindar un servicio a la comunidad de graduados que requieren
+                  de una actualización permanente y de una resistematización de
+                  los conocimientos adquiridos en la práctica profesional.
                 </List.Item>
               </List.List>
             </List.Item>
@@ -68,23 +71,21 @@ export default class DAPreguntas extends Component {
           onClick={this.handleClick}
         >
           <Icon name="dropdown" />
-          ¿Cuál es el Perfil del egresado?
+          ¿Cuáles son las competencias del egresado?
         </Accordion.Title>
         <Accordion.Content active={activeIndex === 1}>
           <p>
-            La Carrera de Especialización debe formar a los abogados que la
-            cursen para que, a su egreso, estén en condiciones de:
+            El perfil del especialista que se quiere formar es el del abogado
+            especializado en Derecho Penal con aptitud para el ejercicio liberal
+            de la profesión y desempeño en la magistratura y ministerio público.
           </p>
           <p>
-            <b>a) </b> Desarrollar una tarea de operador jurídico altamente
-            especializado en Derecho Administrativo, en los ámbitos de las
-            Administraciones Públicas, en las Legislaturas, en los Tribunales de
-            Justicia, en la tarea profesional de abogado.
-          </p>
-          <p>
-            <b>b)</b> Realizar tareas docentes de la materia con excelencia
-            académica, en la propia UNT, complementándola con investigación y
-            extensión.
+            Sin perjuicio de ello será también un perfil de un profesional que
+            en el desarrollo de sus quehaceres profesionales tenga incorporada e
+            internalizadas las cuestiones sociales que se involucran,
+            entendiendo la complejidad de las instituciones jurídicas, sus
+            transformaciones históricas y las prácticas y valores sociales que
+            son la base del derecho.
           </p>
         </Accordion.Content>
 
@@ -98,12 +99,13 @@ export default class DAPreguntas extends Component {
         </Accordion.Title>
         <Accordion.Content active={activeIndex === 2}>
           <p>
-            El plan de estudios de la carrera está integrado de{" "}
-            <b>22 materias</b>, que se desarrollan en cuatro cuatrimestres
-            sucesivos, con una carga académica total de quinientas 536 horas
-            reloj presenciales (clases teórico-prácticas). Las materias de los
-            cuatro (4) cuatrimestres se dictan en 8 horas reloj semanales
-            durante dos años.
+            La modalidad de cursado de todos los cursos es Presencial. La
+            carrera está organizada en 4 cuatrimestres de 82; 100; 104 y 88 hs
+            cada uno. La carga horaria total es de 372 horas reloj (trescientas
+            setenta y dos) compuestas por clases teóricas y prácticas y serán de
+            carácter presencial. Se estructura en seis materias, cada una de las
+            cuales esta subdividida en lecciones que por su contenido y temática
+            integran a cada materia.
           </p>
         </Accordion.Content>
       </Accordion>

@@ -28,34 +28,44 @@ export default class DAPreguntas extends Component {
         <Accordion.Content active={activeIndex === 0}>
           <List>
             <List.Item as="li">
-              <b>Generales:</b>
               <List.List as="ul">
                 <List.Item as="li">
-                  Que la propuesta contribuya a la excelencia académica de la
-                  U.N.T.
+                  Instruir a los profesionales en los conocimientos de los
+                  distintos aspectos relacionados con el Derecho de Daños, de
+                  manera de brindarles herramientas que le faciliten la
+                  interpretación y aplicación de las normas que lo componen, el
+                  asesoramiento y la intervención en la fijación de políticas en
+                  la materia, en la gestión pública y privada y en el diseño de
+                  la legislación en materia de responsabilidad.
                 </List.Item>
                 <List.Item as="li">
-                  Que se dinamice y potencie la formación de posgrado.
+                  Capacitar al profesional para resolver problemas de
+                  responsabilidad civil concretos, simples o estratégicos, en el
+                  ejercicio de la profesión liberal o desde la óptica del
+                  desempeño de funciones en el Poder Judicial.
                 </List.Item>
                 <List.Item as="li">
-                  Que la formación obtenida se transfiera a la docencia de grado
-                  y, especialmente, constituya un aporte al proceso de
-                  transformación curricular con el que la Facultad está
-                  comprometida.
+                  Profundizar la formación de profesionales, en materia de
+                  Derecho de Daños. Lograr un mayor conocimiento técnico
+                  científico debidamente actualizado en la materia,
+                  enriqueciendo el andamiaje teórico con nuevas alternativas.
                 </List.Item>
-              </List.List>
-            </List.Item>
-            <List.Item as="li">
-              <b>Específicos:</b>
-              <List.List as="ul">
                 <List.Item as="li">
-                  Tiene como objetivo dotar a los abogados de una formación
-                  teórica-práctica en Derecho Administrativo, que les permita la
-                  aplicación concreta del conocimiento especializado en las
-                  actividades profesionales que desarrollen los graduados, sea
-                  que la desarrollen en los diversos órganos de la
-                  Administración Central y Descentralizada, en el sector
-                  privado, o en el ámbito de la Legislación o la Justicia.
+                  Brindar un servicio a la comunidad de graduados, acercándoles
+                  las herramientas para la adquisición de nuevas destrezas y
+                  competencias en la temática, en los distintos ámbitos de
+                  incumbencia.
+                </List.Item>
+                <List.Item as="li">
+                  Formar docentes e investigadores en el Derecho de Daños para
+                  hacer frente a la cada vez más compleja problemática
+                  científica.
+                </List.Item>
+                <List.Item as="li">
+                  Profundizar la formación de profesionales, en materia de
+                  Derecho de Daños. Lograr un mayor conocimiento técnico
+                  científico debidamente actualizado en la materia,
+                  enriqueciendo el andamiaje teórico con nuevas alternativas.
                 </List.Item>
               </List.List>
             </List.Item>
@@ -68,23 +78,22 @@ export default class DAPreguntas extends Component {
           onClick={this.handleClick}
         >
           <Icon name="dropdown" />
-          ¿Cuál es el Perfil del egresado?
+          ¿Cuáles son las competencias del egresado?
         </Accordion.Title>
         <Accordion.Content active={activeIndex === 1}>
           <p>
-            La Carrera de Especialización debe formar a los abogados que la
-            cursen para que, a su egreso, estén en condiciones de:
+            El perfil del especialista que se quiere formar es el del abogado
+            especializado en Derecho de Daños con aptitud para el ejercicio
+            liberal de la profesión, desempeño en la magistratura y en distintos
+            organismos del estado.
           </p>
           <p>
-            <b>a) </b> Desarrollar una tarea de operador jurídico altamente
-            especializado en Derecho Administrativo, en los ámbitos de las
-            Administraciones Públicas, en las Legislaturas, en los Tribunales de
-            Justicia, en la tarea profesional de abogado.
-          </p>
-          <p>
-            <b>b)</b> Realizar tareas docentes de la materia con excelencia
-            académica, en la propia UNT, complementándola con investigación y
-            extensión.
+            Sin perjuicio de ello será también un perfil de un profesional que
+            en el desarrollo de sus quehaceres profesionales tenga incorporada e
+            internalizadas las cuestiones sociales que se involucran,
+            entendiendo la complejidad de las instituciones jurídicas, sus
+            transformaciones históricas y las prácticas y valores sociales que
+            son la base del derecho.
           </p>
         </Accordion.Content>
 
@@ -94,17 +103,10 @@ export default class DAPreguntas extends Component {
           onClick={this.handleClick}
         >
           <Icon name="dropdown" />
-          ¿Cuáles son las materias?
+          ¿Cuáles es la modalidad?
         </Accordion.Title>
         <Accordion.Content active={activeIndex === 2}>
-          <p>
-            El plan de estudios de la carrera está integrado de{" "}
-            <b>22 materias</b>, que se desarrollan en cuatro cuatrimestres
-            sucesivos, con una carga académica total de quinientas 536 horas
-            reloj presenciales (clases teórico-prácticas). Las materias de los
-            cuatro (4) cuatrimestres se dictan en 8 horas reloj semanales
-            durante dos años.
-          </p>
+          <p>La modalidad de cursado de todos los cursos es Presencial.</p>
         </Accordion.Content>
       </Accordion>
     );

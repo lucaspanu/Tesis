@@ -25,28 +25,37 @@ const panes = [
     render: () => (
       <Tab.Pane>
         <p style={{ fontSize: "1.1em" }}>
-          Como fundamentos de creación de la carrera de posgrado Especialización
-          en Derecho Administrativo, se tuvo en cuenta el proceso de
-          transformación social e institucional operado en los últimos años que
-          ha determinado que tanto el Estado como las empresas públicas y
-          privadas, así como los ciudadanos mismos, hayan debido asumir nuevos
-          roles, tales como el de usuarios de servicios públicos, partícipes de
-          procedimientos de audiencias públicas o integrantes de asociaciones
-          que protegen los nuevos derechos de incidencia colectiva. Las
-          innumerables cuestiones que se suscitan como consecuencia de tales
-          cambios exigen la presencia de abogados con alta capacitación en
-          Derecho Administrativo.
+          Esta propuesta de posgrado tiene su antecedente en la carrera de
+          Especialización en Derecho Penal dictada de manera interinstitucional
+          con la Facultad de Ciencias Jurídicas y Sociales de la UNL, creada por
+          resolución N° HCS 2220/01.
         </p>
-        <br />
         <p style={{ fontSize: "1.1em" }}>
-          Atendiendo a tales circunstancias, se creó la Carrera de
-          Especialización en Derecho Administrativo, concebida con el propósito
-          de formar a los abogados graduados de una sólida formación –teórica y
-          práctica- que les permita resolver, con justicia y eficiencia, los
-          diferentes problemas que se les presenten en la actividad profesional,
-          sea que la desarrollen en los diversos órganos de la Administración
-          Central y Descentralizada, en el sector privado, o en el ámbito de la
-          Legislación o la Justicia.
+          Esta especialización tiene por objeto la profundización de los
+          conocimientos específicos sobre los actuales desarrollos teóricos en
+          materia penal, a los fines de introducir al alumno en el conocimiento
+          y actualización de las valoraciones básicas sobre las que se construye
+          un sistema de imputación penal en un Estado de Derecho, a la luz del
+          desarrollo del Derecho Internacional y con el obligado cumplimiento
+          por parte del Estado Argentino de dicha normativa.
+        </p>
+        <p style={{ fontSize: "1.1em" }}>
+          Bajo la evocación de esos principios se analiza el anclaje
+          constitucional del derecho penal y se procede a desmenuzar el
+          contenido de dichos principios y las relaciones que se despliegan
+          entre ellos para la plena vigencia del Estado de Derecho. También se
+          procura desarmar su postura tradicional de aislamiento, con respecto a
+          otras disciplinas empíricas, como la criminología, aportando a sus
+          contenidos el acervo critico que permita una visión externa al propio
+          sistema penal y una interpretación teleológica de la norma y el bien
+          jurídico, como fundamentos externos de legitimación de dicho sistema.
+        </p>
+        <p style={{ fontSize: "1.1em" }}>
+          Con relación al ordenamiento procesal penal se ofrece una exposición
+          sucinta de sus contenidos y configuraciones siempre desde una
+          perspectiva constitucional. Se presenta un amplio revelamiento de las
+          categorías que fundamentan el ilícito penal, siguiendo los contenidos
+          que, respecto de ellas, aportan los nuevos modelos de atribución.
         </p>
         <DAPreguntas />
       </Tab.Pane>
@@ -66,71 +75,37 @@ const panes = [
       <Tab.Pane>
         <Header as="h3">Cuerpo Docente</Header>
         <p style={{ fontSize: "1em" }}>
-          ALEJANDRO USLENGHI - UBA – UCA – UNIV. AUSTRAL <br />
-          MARÍA SUSANA VILLARRUEL - UCA
+          CARAMUTI Carlos Santiago Santiago
           <br />
-          JUAN GALEANO - UCA
+          Lammoglia, Diego Ernesto
           <br />
-          ADELINA LOIANNO – UBA – U.C.E Y S<br />
-          OSCAR FLORES – UNT
+          David, Jorge Enrique
           <br />
-          MARÍO REJTMAN FARAH – UBA
+          Duffy, Maria Virginia
           <br />
-          CARLOS BALBIN - UBA
+          Fernandez Vecino, Graciela Nair
           <br />
-          JUAN STUPENENGO – UBA – UNIV. LA MATANZA
+          PALIZA Ángel José
           <br />
-          PABLO ÁNGEL GUTIÉRREZ COLANTUONO - UNIV. NAC. COMAHUE
+          REINOSO Adriana Marcela
           <br />
-          FLORENCIA CASAS - UNT
+          IRIARTE YANICELLI Adolfo Antonio
           <br />
-          AUGUSTO GONZALEZ NAVARRO - UNT
+          JIMENEZ Elva Graciela
           <br />
-          PABLO MARTIN MERCADO - UNT
+          RIQUERT Marcelo Alfredo
           <br />
-          FERNANDO GARCÍA PULLÉS – UBA – UCA – UNIV. AUSTRAL
+          ZAFFARONI Eugenio Raul
           <br />
-          RODOLFO N. NOVILLO - UNT
+          CASTILLO Ana Lia
           <br />
-          BLANCA HERRERA DE VILLAVICENCIO - UNT
+          FERNÁNDEZ DOMINGUEZ Gonzalo Daniel
           <br />
-          MARÍA PAMELA TENREYRO- UNT
+          SOZZO Maximo Emiliano
           <br />
-          DANTE MIRRA - UNT
+          ALVAREZ Ricardo Carlos
           <br />
-          MIRIAM IVANEGA – UBA – U.N. DE LA MATANZA
-          <br />
-          FEDERICO NAZUR - UNT
-          <br />
-          DANIEL NALLAR - – UNIV. CATOLICA DE SALTA
-          <br />
-          LUIS ALFREDO LÓPEZ - UNT
-          <br />
-          SUSANA VEGA - UBA
-          <br />
-          MARÍA ROTAECHE - UBA
-          <br />
-          FERNANDO E. GRANEROS – UNT
-          <br />
-          JUAN G. CORVALÁN – UBA
-          <br />
-          ANA DE LA VEGA DE DÍAZ RICCI – UNT - UNSTA
-          <br />
-          OSCAR AGUILAR VALDÉZ – UBA - UCA
-          <br />
-          HERNAN PÉREZ BOIANI - UBA
-          <br />
-          ROBERTO SOBRE CASAS - UNT
-          <br />
-          LUIS ESTEBAN CARO - UNT
-          <br />
-          CYNTHIA PAOLA GONZALEZ
-          <br />
-          MARTA YOLANDA TEJERIZO – UNT
-          <br />
-          MARÍA ELENA CABALLERO - UNT
-          <br />
-          LUCIANA ESPASA - UNT
+          PALERMO Omar Alejandro
           <br />
         </p>
       </Tab.Pane>
@@ -189,17 +164,17 @@ export default class DerechoPenal extends Component {
                     <Image src={imagen} wrapped ui={false} />
                     <Card.Content>
                       <Card.Description>
-                        <Icon name="clock" /> Carga horaria: 536 hs. <br />
-                        <Icon name="user" /> Directora: Dra. Blanca Herrera de
-                        Villavicencio <br />
-                        <Icon name="user outline" /> Co-director: Dr. Augusto
-                        Gonzalez Navarro <br />
+                        <Icon name="clock" /> Carga horaria: 372 horas <br />
+                        <Icon name="user" /> Director: Prof. Carlos Caramuti{" "}
+                        <br />
+                        <Icon name="user outline" /> Co-directora: Prof.
+                        Graciela Fernández Vecino <br />
                         <Icon name="balance scale" /> Titulo: Especialización en
                         Derecho Penal
                       </Card.Description>
                     </Card.Content>
                     <Card.Content extra>
-                      <a>Res. N° 815/15</a>
+                      <a>Res. N° 458/18</a>
                     </Card.Content>
                   </Card>
                 </Grid.Column>
