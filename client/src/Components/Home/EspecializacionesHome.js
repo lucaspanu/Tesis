@@ -41,7 +41,7 @@ function EspecializacionesHome() {
           <Card.Content extra>
             <a>
               <Icon name="money" />
-              $6200
+              19 cuotas de $6.100
             </a>
           </Card.Content>
         </Card>
@@ -66,7 +66,7 @@ function EspecializacionesHome() {
           <Card.Content extra>
             <a>
               <Icon name="money" />
-              $6200
+              19 cuotas de $6.100
             </a>
           </Card.Content>
         </Card>
@@ -84,14 +84,14 @@ function EspecializacionesHome() {
               <span className="date">Agosto 2021</span>
             </Card.Meta>
             <Card.Description>
-              Redaccion de clausulas contractuales a la luz del codigo civil y
-              comercial de la nacion
+              Dirección: 𝐀𝐝𝐞𝐥𝐚 𝐒𝐞𝐠𝐮í | Duración: 2 años - 380 hs. académicas |
+              Clases: Viernes de 16 a 20 hs.
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
             <a>
               <Icon name="money" />
-              $6200
+              19 cuotas de $6.100
             </a>
           </Card.Content>
         </Card>
@@ -116,7 +116,7 @@ function EspecializacionesHome() {
           <Card.Content extra>
             <a>
               <Icon name="money" />
-              $6200
+              19 cuotas de $6.100
             </a>
           </Card.Content>
         </Card>
