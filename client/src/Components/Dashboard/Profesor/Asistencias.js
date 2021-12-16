@@ -23,6 +23,7 @@ function Asistencias() {
   //Carga de Datos
   useEffect(() => {
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadData = () => {
@@ -39,9 +40,11 @@ function Asistencias() {
       });
   };
 
-  const cursos = data.filter((x) =>
-    x.profesores.some((x) => x === isAuth()._id)
-  );
+  const cursos =
+    isAuth().role === "admin"
+      ? data
+      : data.filter((x) => x.profesores.some((x) => x === isAuth()._id));
+
   return (
     <div>
       <ToastContainer />
