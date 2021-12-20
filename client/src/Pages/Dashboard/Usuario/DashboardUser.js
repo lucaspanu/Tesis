@@ -12,6 +12,7 @@ import {
   Grid,
   Table,
   Progress,
+  Label,
 } from "semantic-ui-react";
 import NoFound from "../../../Components/NoFound/NoFound";
 import { isAuth } from "../../../helpers/auth";
@@ -90,8 +91,14 @@ function DashboardUser() {
                   </Grid.Row>
                 </Grid>
               </Header>
-              <Asistencias asistencias={asistenciasData} />
-              <Cuotas cuotas={cuotasData} />
+              <Asistencias
+                asistencias={asistenciasData}
+                cursoSeleccionado={cursoSeleccionado}
+              />
+              <Cuotas
+                cuotas={cuotasData}
+                cursoSeleccionado={cursoSeleccionado}
+              />
             </>
           ) : (
             <>
@@ -122,25 +129,66 @@ function DashboardUser() {
 
 export default DashboardUser;
 
-const Asistencias = ({ asistencias }) => {
+const Asistencias = ({ asistencias, cursoSeleccionado }) => {
+  const asistenciasUser = asistencias.filter(
+    (x) => x.id_curso === cursoSeleccionado._id
+  );
   return (
     <Segment>
       <Header as="h3" dividing>
         Asistencias
       </Header>
+      <Table singleLine>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>Numero de clase</Table.HeaderCell>
+            <Table.HeaderCell>Fecha</Table.HeaderCell>
+            <Table.HeaderCell />
+          </Table.Row>
+        </Table.Header>
+
+        <Table.Body>
+          {asistenciasUser.length !== 0 ? (
+            asistenciasUser.map((asistencias) => (
+              <Table.Row>
+                <Table.Cell>{asistencias.nro_clase}</Table.Cell>
+                <Table.Cell>{asistencias.fecha}</Table.Cell>
+                <Table.Cell>
+                  {asistencias.alumnos.find((x) => x.alumno === isAuth()._id)
+                    .presente ? (
+                    <Label color={"green"}>{"Presente"}</Label>
+                  ) : (
+                    <Label color={"red"}>{"Ausente"}</Label>
+                  )}
+                </Table.Cell>
+              </Table.Row>
+            ))
+          ) : (
+            <Table.Row>
+              <Table.Cell>
+                <Icon name="x" />
+                No se encontraron asistencias
+              </Table.Cell>
+            </Table.Row>
+          )}
+        </Table.Body>
+      </Table>
     </Segment>
   );
 };
 
 const Cuotas = ({ cuotas, cursoSeleccionado }) => {
+  const cuotasUser = cuotas.filter(
+    (x) => x.id_curso === cursoSeleccionado._id && x.id_alumno === isAuth()._id
+  );
   return (
     <Segment>
       <Header as="h3" dividing>
         Cuotas
       </Header>
-      {!!cursoSeleccionado?.nro_cuotas && (
+      {cursoSeleccionado?.nro_cuotas && cuotasUser.length !== 0 && (
         <Progress
-          value={cuotas[cuotas.length - 1].nro_cuota}
+          value={cuotasUser[cuotasUser.length - 1].nro_cuota}
           total={cursoSeleccionado.nro_cuotas}
           progress="ratio"
         />
@@ -157,8 +205,8 @@ const Cuotas = ({ cuotas, cursoSeleccionado }) => {
         </Table.Header>
 
         <Table.Body>
-          {cuotas.length !== 0 ? (
-            cuotas.map((cuota) => (
+          {cuotasUser.length !== 0 ? (
+            cuotasUser.map((cuota) => (
               <Table.Row>
                 <Table.Cell>{cuota.fecha}</Table.Cell>
                 <Table.Cell>{cuota.monto}</Table.Cell>
