@@ -59,7 +59,7 @@ function Asistencias() {
   );
 
   const ultimoNumeroAsistencias =
-    asistencias[asistencias.length - 1]?.nro_clase || 1;
+    asistencias[asistencias.length - 1]?.nro_clase + 1 || 1;
 
   return (
     <div>
@@ -176,6 +176,7 @@ function AddAsistencias({ cursoSeleccionado, users, ultimoNumeroAsistencias }) {
       alumnosNuevo.push({ alumno: x, presente: false })
     );
     setFormData({ ...formData, alumnos: alumnosNuevo });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { id_curso, fecha, nro_clase, alumnos } = formData;
@@ -204,7 +205,7 @@ function AddAsistencias({ cursoSeleccionado, users, ultimoNumeroAsistencias }) {
           setFormData({
             ...formData,
             fecha: "",
-            nro_clase: null,
+            nro_clase: nro_clase + 1,
           });
           console.log(err.response);
           toast.error(err.response.data.errors);

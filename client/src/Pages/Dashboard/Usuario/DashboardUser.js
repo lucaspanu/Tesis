@@ -30,6 +30,7 @@ function DashboardUser() {
   //Carga de Datos
   useEffect(() => {
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadData = () => {
@@ -133,11 +134,32 @@ const Asistencias = ({ asistencias, cursoSeleccionado }) => {
   const asistenciasUser = asistencias.filter(
     (x) => x.id_curso === cursoSeleccionado._id
   );
+  const asistenciasTotales = asistenciasUser.length;
+  const [totalAsistencias, setTotal] = useState(0);
+  useEffect(() => {
+    let contador = 0;
+    asistenciasUser.length !== 0 &&
+      asistenciasUser.map(
+        (x) =>
+          x.alumnos.find((x) => x.alumno === isAuth()._id).presente &&
+          contador++
+      );
+    setTotal(contador);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Segment>
       <Header as="h3" dividing>
         Asistencias
       </Header>
+      {asistenciasTotales !== 0 && (
+        <Progress
+          value={totalAsistencias}
+          total={asistenciasTotales}
+          progress="percent"
+        />
+      )}
       <Table singleLine>
         <Table.Header>
           <Table.Row>
@@ -146,11 +168,10 @@ const Asistencias = ({ asistencias, cursoSeleccionado }) => {
             <Table.HeaderCell />
           </Table.Row>
         </Table.Header>
-
         <Table.Body>
           {asistenciasUser.length !== 0 ? (
             asistenciasUser.map((asistencias) => (
-              <Table.Row>
+              <Table.Row key={asistencias._id}>
                 <Table.Cell>{asistencias.nro_clase}</Table.Cell>
                 <Table.Cell>{asistencias.fecha}</Table.Cell>
                 <Table.Cell>
@@ -207,7 +228,7 @@ const Cuotas = ({ cuotas, cursoSeleccionado }) => {
         <Table.Body>
           {cuotasUser.length !== 0 ? (
             cuotasUser.map((cuota) => (
-              <Table.Row>
+              <Table.Row key={cuota._id}>
                 <Table.Cell>{cuota.fecha}</Table.Cell>
                 <Table.Cell>{cuota.monto}</Table.Cell>
                 <Table.Cell>{cuota.nro_transaccion}</Table.Cell>
@@ -254,7 +275,9 @@ const MapCursos = ({ titulo, data, onClick, buttonText, noDataText }) => {
                 </Card.Content>
                 <Card.Content extra>
                   <Button.Group fluid>
-                    <Button onClick={() => onClick(curso)}>{buttonText}</Button>
+                    <Button positive onClick={() => onClick(curso)}>
+                      {buttonText}
+                    </Button>
                   </Button.Group>
                 </Card.Content>
               </Card>

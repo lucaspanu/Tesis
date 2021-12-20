@@ -1,7 +1,16 @@
 import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-import { Button, Card, Grid, Header, Image, Segment } from "semantic-ui-react";
+import {
+  Button,
+  Card,
+  Grid,
+  Header,
+  Image,
+  Segment,
+  Label,
+  Icon,
+} from "semantic-ui-react";
 import { isAuth } from "../../../helpers/auth";
 import NoFound from "../../NoFound/NoFound";
 
@@ -37,6 +46,7 @@ function InscripcionCursos({ diplomaturas }) {
   //Carga de Datos
   useEffect(() => {
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { cursos, inscripciones } = formData;
@@ -57,14 +67,17 @@ function InscripcionCursos({ diplomaturas }) {
       });
   };
 
-  const isInscripto = (cursoId) => {
+  const isIncripto = (cursoId) => {
+    return cursos
+      .find((x) => x._id === cursoId)
+      .alumnos.some((x) => x === isAuth()._id);
+  };
+
+  const disabledButon = (cursoId) => {
     return (
       inscripciones.some(
         (x) => x.id_alumno === isAuth()._id && x.id_curso === cursoId
-      ) ||
-      cursos
-        .find((x) => x._id === cursoId)
-        .alumnos.some((x) => x === isAuth()._id)
+      ) || isIncripto(cursoId)
     );
   };
 
@@ -94,7 +107,6 @@ function InscripcionCursos({ diplomaturas }) {
                         }
                       />
                       <Card.Content>
-                        <Header floated="right" color="red"></Header>
                         <Card.Header>
                           <Header color="red">{curso.titulo}</Header>
                         </Card.Header>
@@ -104,15 +116,19 @@ function InscripcionCursos({ diplomaturas }) {
                       <Card.Content extra>
                         <Button.Group fluid>
                           <Button
-                            positive={!isInscripto(curso._id)}
+                            positive={!disabledButon(curso._id)}
                             onClick={() => handleSubmit(curso._id)}
-                            disabled={isInscripto(curso._id)}
+                            disabled={disabledButon(curso._id)}
                           >
                             Solicitar Adminision
                           </Button>
                         </Button.Group>
                       </Card.Content>
                     </Card>
+                    <Label attached="top left" color="blue" ribbon="left">
+                      <Icon name="checkmark" />
+                      Inscripto
+                    </Label>
                   </Grid.Column>
                 </Fragment>
               ))}
