@@ -164,14 +164,16 @@ function Cuotas() {
                         <Table.Cell>{cuota.nro_transaccion}</Table.Cell>
                         <Table.Cell>{cuota.nro_cuota}</Table.Cell>
                         <Table.Cell>{cuota.intereses}</Table.Cell>
-                        <Button.Group floated="left">
-                          <EditarCuota
-                            cuota={cuota}
-                            userName={userNameById(alumnoValue)}
-                            cursoTitle={cursoTitleById(cursoValue)}
-                          />
-                          <DeleteCuota cuota={cuota} />
-                        </Button.Group>
+                        <Table.Cell>
+                          <Button.Group floated="left">
+                            <EditarCuota
+                              cuota={cuota}
+                              userName={userNameById(alumnoValue)}
+                              cursoTitle={cursoTitleById(cursoValue)}
+                            />
+                            <DeleteCuota cuota={cuota} />
+                          </Button.Group>
+                        </Table.Cell>
                       </Table.Row>
                     ))
                   ) : (

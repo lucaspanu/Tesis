@@ -28,7 +28,7 @@ function Especializaciones() {
       <Segment>
         <Container>
           <Header as="h3" style={{ fontSize: "2em", textAlign: "center" }}>
-            Carreras disponibles
+            Especializaciones Disponibles
           </Header>
           <Divider></Divider>
           <div style={{ textAlign: "center" }}>

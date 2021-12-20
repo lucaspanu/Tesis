@@ -8,7 +8,7 @@ import {
   Icon,
   Image,
 } from "semantic-ui-react";
-
+import { Link } from "react-router-dom";
 import DerechoAdministrativo from "../../Assets/Image/Especializaciones/DerechoAdministrativo.jpg";
 import DerechoAmbiental from "../../Assets/Image/Especializaciones/DerechoAmbiental.jpg";
 import DerechoDanos from "../../Assets/Image/Especializaciones/DerechoDanos.jpg";
@@ -39,10 +39,8 @@ function EspecializacionesHome() {
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
-            <a>
-              <Icon name="money" />
-              19 cuotas de $6.100
-            </a>
+            <Icon name="money" />
+            19 cuotas de $6.100
           </Card.Content>
         </Card>
         <Card>
@@ -64,10 +62,8 @@ function EspecializacionesHome() {
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
-            <a>
-              <Icon name="money" />
-              19 cuotas de $6.100
-            </a>
+            <Icon name="money" />
+            19 cuotas de $6.100
           </Card.Content>
         </Card>
         <Card>
@@ -84,15 +80,13 @@ function EspecializacionesHome() {
               <span className="date">Agosto 2021</span>
             </Card.Meta>
             <Card.Description>
-              Dirección: 𝐀𝐝𝐞𝐥𝐚 𝐒𝐞𝐠𝐮í | Duración: 2 años - 380 hs. académicas |
+              Dirección: Adela Segui | Duración: 2 años - 380 hs. académicas |
               Clases: Viernes de 16 a 20 hs.
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
-            <a>
-              <Icon name="money" />
-              19 cuotas de $6.100
-            </a>
+            <Icon name="money" />
+            19 cuotas de $6.100
           </Card.Content>
         </Card>
         <Card>
@@ -114,16 +108,16 @@ function EspecializacionesHome() {
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
-            <a>
-              <Icon name="money" />
-              19 cuotas de $6.100
-            </a>
+            <Icon name="money" />
+            19 cuotas de $6.100
           </Card.Content>
         </Card>
       </Card.Group>
       <Divider hidden />
       <Container textAlign="center">
-        <Button secondary>Ver Mas</Button>
+        <Button as={Link} to="/especializaciones" secondary>
+          Ver Mas
+        </Button>
       </Container>
     </div>
   );
