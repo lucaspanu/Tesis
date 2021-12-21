@@ -18,6 +18,7 @@ function InscripcionCursos({ diplomaturas }) {
   const [formData, setFormData] = useState({
     cursos: [],
     inscripciones: [],
+    disabledButton: false,
   });
 
   const loadData = () => {
@@ -49,7 +50,7 @@ function InscripcionCursos({ diplomaturas }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const { cursos, inscripciones } = formData;
+  const { cursos, inscripciones, disabledButton } = formData;
 
   //submit data to backend
   const handleSubmit = (cursoId) => {
@@ -60,6 +61,7 @@ function InscripcionCursos({ diplomaturas }) {
       })
       .then((res) => {
         toast.success(res.data.message);
+        setFormData({ ...formData, disabledButton: true });
       })
       .catch((err) => {
         console.log(err.response);
@@ -108,7 +110,7 @@ function InscripcionCursos({ diplomaturas }) {
                       />
                       <Card.Content>
                         <Card.Header>
-                          <Header color="red">{curso.titulo}</Header>
+                          <Header>{curso.titulo}</Header>
                         </Card.Header>
                         <Card.Meta>{curso.fecha}</Card.Meta>
                         <Card.Description>{curso.descripcion}</Card.Description>
@@ -118,17 +120,21 @@ function InscripcionCursos({ diplomaturas }) {
                           <Button
                             positive={!disabledButon(curso._id)}
                             onClick={() => handleSubmit(curso._id)}
-                            disabled={disabledButon(curso._id)}
+                            disabled={
+                              disabledButon(curso._id) || disabledButton
+                            }
                           >
                             Solicitar Adminision
                           </Button>
                         </Button.Group>
                       </Card.Content>
                     </Card>
-                    <Label attached="top left" color="blue" ribbon="left">
-                      <Icon name="checkmark" />
-                      Inscripto
-                    </Label>
+                    {isIncripto(curso._id) && (
+                      <Label attached="top left" color="blue" ribbon="left">
+                        <Icon name="checkmark" />
+                        Inscripto
+                      </Label>
+                    )}
                   </Grid.Column>
                 </Fragment>
               ))}

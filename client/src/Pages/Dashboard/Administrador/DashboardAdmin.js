@@ -14,6 +14,7 @@ function DashboardAdmin() {
   //Carga de Datos
   useEffect(() => {
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadData = () => {
@@ -38,7 +39,6 @@ function DashboardAdmin() {
         <Grid.Column computer="4" tablet="8" mobile="16" textAlign="center">
           <Statistic color="teal">
             <Statistic.Value>
-              {" "}
               {users.filter((x) => x.role === "Usuario").length}
             </Statistic.Value>
             <Statistic.Label>Usuarios</Statistic.Label>
@@ -47,8 +47,7 @@ function DashboardAdmin() {
         <Grid.Column computer="4" tablet="8" mobile="16" textAlign="center">
           <Statistic color="blue">
             <Statistic.Value>
-              {" "}
-              {users.filter((x) => x.role === "profesor").length}
+              {users.filter((x) => x.role === "Profesor").length}
             </Statistic.Value>
             <Statistic.Label>Profesores</Statistic.Label>
           </Statistic>
@@ -56,7 +55,6 @@ function DashboardAdmin() {
         <Grid.Column computer="4" tablet="8" mobile="16" textAlign="center">
           <Statistic color="red">
             <Statistic.Value>
-              {" "}
               {users.filter((x) => x.role === "admin").length}
             </Statistic.Value>
             <Statistic.Label>Administradores</Statistic.Label>

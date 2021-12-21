@@ -31,11 +31,11 @@ function EspecializacionesHome() {
           <Card.Content>
             <Card.Header>Derecho Administrativo</Card.Header>
             <Card.Meta>
-              <span className="date">Agosto 2021</span>
+              <span className="date">Mayo 2022</span>
             </Card.Meta>
             <Card.Description>
-              Redaccion de clausulas contractuales a la luz del codigo civil y
-              comercial de la nacion
+              Dirección: Blanca Herrera de Villavicencio | Duración: 2 años -
+              536 hs. | Clases: 8 a 13 hs.
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
@@ -54,11 +54,10 @@ function EspecializacionesHome() {
           <Card.Content>
             <Card.Header>Derecho Ambiental</Card.Header>
             <Card.Meta>
-              <span className="date">Agosto 2021</span>
+              <span className="date">Noviembre 2022</span>
             </Card.Meta>
             <Card.Description>
-              Redaccion de clausulas contractuales a la luz del codigo civil y
-              comercial de la nacion
+              Dirección: Adela Seguí, Claudia Sbdar | Duración: 2 años - 380 hs.
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
@@ -77,11 +76,11 @@ function EspecializacionesHome() {
           <Card.Content>
             <Card.Header>Derecho de Daños</Card.Header>
             <Card.Meta>
-              <span className="date">Agosto 2021</span>
+              <span className="date">Agosto 2022</span>
             </Card.Meta>
             <Card.Description>
-              Dirección: Adela Segui | Duración: 2 años - 380 hs. académicas |
-              Clases: Viernes de 16 a 20 hs.
+              Dirección: Adela Segui | Duración: 2 años - 380 hs. | Clases:
+              Viernes de 16 a 20 hs.
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
@@ -100,11 +99,11 @@ function EspecializacionesHome() {
           <Card.Content>
             <Card.Header>Derecho Penal</Card.Header>
             <Card.Meta>
-              <span className="date">Agosto 2021</span>
+              <span className="date">Junio 2022</span>
             </Card.Meta>
             <Card.Description>
-              Redaccion de clausulas contractuales a la luz del codigo civil y
-              comercial de la nacion
+              Dirección: Carlos Caramuti | Duración: 2 años - 372 hs. | Clases:
+              Viernes de 12 a 16 hs.
             </Card.Description>
           </Card.Content>
           <Card.Content extra>
