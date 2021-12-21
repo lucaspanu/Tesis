@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
-import { authenticate, isAuth } from "../../helpers/auth";
+import { isAuth } from "../../helpers/auth";
 import { Link, Redirect } from "react-router-dom";
 import {
   Button,
@@ -21,7 +21,7 @@ const RegisterForm = ({ history }) => {
     password2: "",
   });
 
-  const { name, email, password1, password2, textChange } = formData;
+  const { name, email, password1, password2 } = formData;
   //Handle change from inputs
   const handleChange = (text) => (e) => {
     setFormData({ ...formData, [text]: e.target.value });
@@ -40,7 +40,6 @@ const RegisterForm = ({ history }) => {
             password: password1,
           })
           .then((res) => {
-            // authenticate(res, () => {
             setFormData({
               ...formData,
               name: "",
@@ -48,17 +47,11 @@ const RegisterForm = ({ history }) => {
               password1: "",
               password2: "",
             });
-            // });
             toast.success(res.data.message);
-            // isAuth() && isAuth().role === "admin"
-            //   ? history.push("/admin")
-            //   : history.push("/private");
           })
           .catch((err) => {
             setFormData({
               ...formData,
-              name: "",
-              email: "",
               password1: "",
               password2: "",
             });

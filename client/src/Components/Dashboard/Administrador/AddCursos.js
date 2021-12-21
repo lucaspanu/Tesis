@@ -109,7 +109,7 @@ function AddCursos({ diplomatura }) {
             imagen: "",
           });
           console.log(err.response);
-          toast.error(err.response.data.errors);
+          toast.error(err.response?.data?.errors);
         });
     } else {
       toast.error("Por favor agrega un titulo y una descripcion");
