@@ -175,8 +175,8 @@ const Asistencias = ({ asistencias, cursoSeleccionado }) => {
                 <Table.Cell>{asistencias.nro_clase}</Table.Cell>
                 <Table.Cell>{asistencias.fecha}</Table.Cell>
                 <Table.Cell>
-                  {asistencias.alumnos.find((x) => x.alumno === isAuth()._id)
-                    .presente ? (
+                  {asistencias.alumnos?.find((x) => x.alumno === isAuth()._id)
+                    ?.presente ? (
                     <Label color={"green"}>{"Presente"}</Label>
                   ) : (
                     <Label color={"red"}>{"Ausente"}</Label>
