@@ -134,14 +134,14 @@ const Asistencias = ({ asistencias, cursoSeleccionado }) => {
   const asistenciasUser = asistencias.filter(
     (x) => x.id_curso === cursoSeleccionado._id
   );
-  const asistenciasTotales = asistenciasUser.length;
+  const asistenciasTotales = asistenciasUser?.length;
   const [totalAsistencias, setTotal] = useState(0);
   useEffect(() => {
     let contador = 0;
-    asistenciasUser.length !== 0 &&
+    asistenciasUser?.length !== 0 &&
       asistenciasUser.map(
         (x) =>
-          x.alumnos.find((x) => x.alumno === isAuth()._id).presente &&
+          x.alumnos?.find((x) => x.alumno === isAuth()._id)?.presente &&
           contador++
       );
     setTotal(contador);
