@@ -59,7 +59,7 @@ function Asistencias() {
   );
 
   const ultimoNumeroAsistencias =
-    asistencias[asistencias.length - 1]?.nro_clase + 1 || 1;
+    asistenciasFiltradas[asistenciasFiltradas.length - 1]?.nro_clase + 1 || 1;
 
   return (
     <div>
@@ -200,6 +200,9 @@ function AddAsistencias({ cursoSeleccionado, users, ultimoNumeroAsistencias }) {
         })
         .then((res) => {
           toast.success(res.data.message);
+          setTimeout(function () {
+            window.location.href = "/admin/asistencias";
+          }, 2500);
         })
         .catch((err) => {
           setFormData({
