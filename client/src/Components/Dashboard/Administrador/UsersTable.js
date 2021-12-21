@@ -10,11 +10,11 @@ import {
   Input,
   Header,
   Segment,
-  Radio,
 } from "semantic-ui-react";
 import FileBase from "react-file-base64";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import moment from "moment";
 
 function UsersTable({ users }) {
   return (
@@ -36,7 +36,9 @@ function UsersTable({ users }) {
             <>
               <Table.Row>
                 <Table.Cell>{usuario.name}</Table.Cell>
-                <Table.Cell>{usuario.createdAt}</Table.Cell>
+                <Table.Cell>
+                  {moment(usuario.createdAt).format("DD/MM/YYYY")}
+                </Table.Cell>
                 <Table.Cell>{usuario.email}</Table.Cell>
                 <Table.Cell>{usuario.role}</Table.Cell>
                 <Table.Cell>
@@ -104,8 +106,6 @@ function VerPerfil({ usuario }) {
   });
 
   const {
-    perfilId,
-    userId,
     dni,
     apy_nom,
     lugar_nacimiento,
@@ -129,12 +129,12 @@ function VerPerfil({ usuario }) {
     imagen_dni,
     imagen_titulo_universitario,
     imagen_cv,
-    estado,
   } = formData;
 
   //Carga de Datos
   useEffect(() => {
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadData = () => {

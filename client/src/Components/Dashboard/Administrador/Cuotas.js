@@ -11,6 +11,7 @@ import {
   Icon,
   Modal,
   Form,
+  Grid,
 } from "semantic-ui-react";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -142,67 +143,85 @@ function Cuotas() {
           <Divider hidden />
 
           {activeTable && (
-            <>
-              <Table singleLine>
-                <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell>Fecha</Table.HeaderCell>
-                    <Table.HeaderCell>Monto</Table.HeaderCell>
-                    <Table.HeaderCell>Numero de Transaccion</Table.HeaderCell>
-                    <Table.HeaderCell>Numero de Cuota</Table.HeaderCell>
-                    <Table.HeaderCell>Intereses</Table.HeaderCell>
-                    <Table.HeaderCell />
-                  </Table.Row>
-                </Table.Header>
-
-                <Table.Body>
-                  {activeCuotas.length !== 0 ? (
-                    activeCuotas.map((cuota) => (
-                      <Table.Row>
-                        <Table.Cell>{cuota.fecha}</Table.Cell>
-                        <Table.Cell>{cuota.monto}</Table.Cell>
-                        <Table.Cell>{cuota.nro_transaccion}</Table.Cell>
-                        <Table.Cell>{cuota.nro_cuota}</Table.Cell>
-                        <Table.Cell>{cuota.intereses}</Table.Cell>
-                        <Table.Cell>
-                          <Button.Group floated="left">
-                            <EditarCuota
-                              cuota={cuota}
-                              userName={userNameById(alumnoValue)}
-                              cursoTitle={cursoTitleById(cursoValue)}
-                            />
-                            <DeleteCuota cuota={cuota} />
-                          </Button.Group>
-                        </Table.Cell>
-                      </Table.Row>
-                    ))
-                  ) : (
-                    <Table.Row>
-                      <Table.Cell>
-                        <Icon name="x" />
-                        No se encontraron cuotas disponibles
-                      </Table.Cell>
-                    </Table.Row>
-                  )}
-                </Table.Body>
-                <Table.Footer fullWidth>
-                  <Table.Row>
-                    <Table.HeaderCell colSpan="6">
-                      <AddCuota
-                        userId={alumnoValue}
-                        cursoId={cursoValue}
-                        userName={userNameById(alumnoValue)}
-                        cursoTitle={cursoTitleById(cursoValue)}
-                      />
-                    </Table.HeaderCell>
-                  </Table.Row>
-                </Table.Footer>
-              </Table>
-            </>
+            <TableCuotas
+              activeCuotas={activeCuotas}
+              alumnoValue={alumnoValue}
+              cursoValue={cursoValue}
+              userNameById={userNameById}
+              cursoTitleById={cursoTitleById}
+            />
           )}
         </Container>
       </Segment>
     </div>
+  );
+}
+
+function TableCuotas({
+  activeCuotas,
+  alumnoValue,
+  cursoValue,
+  userNameById,
+  cursoTitleById,
+}) {
+  return (
+    <>
+      <Table singleLine>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>Fecha</Table.HeaderCell>
+            <Table.HeaderCell>Monto</Table.HeaderCell>
+            <Table.HeaderCell>Numero de Transaccion</Table.HeaderCell>
+            <Table.HeaderCell>Numero de Cuota</Table.HeaderCell>
+            <Table.HeaderCell>Intereses</Table.HeaderCell>
+            <Table.HeaderCell />
+          </Table.Row>
+        </Table.Header>
+
+        <Table.Body>
+          {activeCuotas.length !== 0 ? (
+            activeCuotas.map((cuota) => (
+              <Table.Row>
+                <Table.Cell>{cuota.fecha}</Table.Cell>
+                <Table.Cell>{`$ ${cuota.monto}`}</Table.Cell>
+                <Table.Cell>{cuota.nro_transaccion}</Table.Cell>
+                <Table.Cell>{cuota.nro_cuota}</Table.Cell>
+                <Table.Cell>{`$ ${cuota.intereses}`}</Table.Cell>
+                <Table.Cell>
+                  <Button.Group floated="left">
+                    <EditarCuota
+                      cuota={cuota}
+                      userName={userNameById(alumnoValue)}
+                      cursoTitle={cursoTitleById(cursoValue)}
+                    />
+                    <DeleteCuota cuota={cuota} />
+                  </Button.Group>
+                </Table.Cell>
+              </Table.Row>
+            ))
+          ) : (
+            <Table.Row>
+              <Table.Cell>
+                <Icon name="x" />
+                No se encontraron cuotas disponibles
+              </Table.Cell>
+            </Table.Row>
+          )}
+        </Table.Body>
+        <Table.Footer fullWidth>
+          <Table.Row>
+            <Table.HeaderCell colSpan="6">
+              <AddCuota
+                userId={alumnoValue}
+                cursoId={cursoValue}
+                userName={userNameById(alumnoValue)}
+                cursoTitle={cursoTitleById(cursoValue)}
+              />
+            </Table.HeaderCell>
+          </Table.Row>
+        </Table.Footer>
+      </Table>
+    </>
   );
 }
 

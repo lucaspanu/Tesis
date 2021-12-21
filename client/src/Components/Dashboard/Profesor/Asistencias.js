@@ -89,10 +89,10 @@ function Asistencias() {
                   </Grid.Row>
                 </Grid>
               </Header>
-              <Table singleLine>
+              <Table unstackable singleLine>
                 <Table.Header>
                   <Table.Row>
-                    <Table.HeaderCell>Numero de clase</Table.HeaderCell>
+                    <Table.HeaderCell>N° Clase</Table.HeaderCell>
                     <Table.HeaderCell>Fecha</Table.HeaderCell>
                     <Table.HeaderCell>Alumnos</Table.HeaderCell>
                     <Table.HeaderCell />

@@ -198,9 +198,7 @@ export default class DerechoProcesal extends Component {
                         Derecho Procesal
                       </Card.Description>
                     </Card.Content>
-                    <Card.Content extra>
-                      <a>Res. N° 815/15</a>
-                    </Card.Content>
+                    <Card.Content extra>Res. N° 815/15</Card.Content>
                   </Card>
                 </Grid.Column>
               </Grid.Row>

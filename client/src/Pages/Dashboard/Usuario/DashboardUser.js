@@ -160,10 +160,10 @@ const Asistencias = ({ asistencias, cursoSeleccionado }) => {
           progress="percent"
         />
       )}
-      <Table singleLine>
+      <Table unstackable singleLine>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Numero de clase</Table.HeaderCell>
+            <Table.HeaderCell>Numero de Clase</Table.HeaderCell>
             <Table.HeaderCell>Fecha</Table.HeaderCell>
             <Table.HeaderCell />
           </Table.Row>
@@ -219,8 +219,8 @@ const Cuotas = ({ cuotas, cursoSeleccionado }) => {
           <Table.Row>
             <Table.HeaderCell>Fecha</Table.HeaderCell>
             <Table.HeaderCell>Monto</Table.HeaderCell>
-            <Table.HeaderCell>Numero de Transaccion</Table.HeaderCell>
-            <Table.HeaderCell>Numero de Cuota</Table.HeaderCell>
+            <Table.HeaderCell>N° Trans</Table.HeaderCell>
+            <Table.HeaderCell>N° Cuota</Table.HeaderCell>
             <Table.HeaderCell>Intereses</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
@@ -230,10 +230,10 @@ const Cuotas = ({ cuotas, cursoSeleccionado }) => {
             cuotasUser.map((cuota) => (
               <Table.Row key={cuota._id}>
                 <Table.Cell>{cuota.fecha}</Table.Cell>
-                <Table.Cell>{cuota.monto}</Table.Cell>
+                <Table.Cell>{`$ ${cuota.monto}`}</Table.Cell>
                 <Table.Cell>{cuota.nro_transaccion}</Table.Cell>
                 <Table.Cell>{cuota.nro_cuota}</Table.Cell>
-                <Table.Cell>{cuota.intereses}</Table.Cell>
+                <Table.Cell>{`$ ${cuota.intereses}`}</Table.Cell>
               </Table.Row>
             ))
           ) : (
