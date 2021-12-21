@@ -169,7 +169,7 @@ const Asistencias = ({ asistencias, cursoSeleccionado }) => {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {asistenciasUser.length !== 0 ? (
+          {asistenciasUser?.length !== 0 ? (
             asistenciasUser.map((asistencias) => (
               <Table.Row key={asistencias._id}>
                 <Table.Cell>{asistencias.nro_clase}</Table.Cell>
