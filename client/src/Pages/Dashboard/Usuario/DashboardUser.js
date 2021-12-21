@@ -199,9 +199,12 @@ const Asistencias = ({ asistencias, cursoSeleccionado }) => {
 };
 
 const Cuotas = ({ cuotas, cursoSeleccionado }) => {
+  const userId = isAuth()._id;
   const cuotasUser = cuotas.filter(
-    (x) => x.id_curso === cursoSeleccionado._id && x.id_alumno === isAuth()._id
+    (x) => x.id_curso === cursoSeleccionado._id && x.id_alumno === userId
   );
+
+  console.log({ cuotas, cuotasUser, cursoSeleccionado });
   return (
     <Segment>
       <Header as="h3" dividing>

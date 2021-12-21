@@ -109,7 +109,7 @@ function AddCursos({ diplomatura }) {
             imagen: "",
           });
           console.log(err.response);
-          toast.error("Error tamaño de imagen muy grande");
+          toast.error("Error tamaño de imagen es muy grande");
         });
     } else {
       toast.error("Por favor agrega un titulo y una descripcion");

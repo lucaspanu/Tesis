@@ -185,7 +185,7 @@ function TableCuotas({
                 <Table.Cell>{`$ ${cuota.monto}`}</Table.Cell>
                 <Table.Cell>{cuota.nro_transaccion}</Table.Cell>
                 <Table.Cell>{cuota.nro_cuota}</Table.Cell>
-                <Table.Cell>{`$ ${cuota.intereses}`}</Table.Cell>
+                <Table.Cell>{`$ ${cuota.intereses || 0}`}</Table.Cell>
                 <Table.Cell>
                   <Button.Group floated="left">
                     <EditarCuota
@@ -452,6 +452,14 @@ function AddCuota({ userId, cursoId, userName, cursoTitle }) {
         })
         .then((res) => {
           toast.success(res.data.message);
+          setFormCuotasData({
+            ...formCuotasData,
+            fecha: null,
+            monto: null,
+            nro_transaccion: nro_transaccion + 1,
+            nro_cuota: nro_cuota + 1,
+            intereses: null,
+          });
         })
         .catch((err) => {
           setFormCuotasData({

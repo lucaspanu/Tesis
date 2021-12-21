@@ -129,7 +129,7 @@ function DeleteCurso({ curso }) {
   );
 }
 
-function EditCurso({ curso, users }) {
+function EditCurso({ curso, users, diplomaturas }) {
   const [open, setOpen] = React.useState(false);
 
   const [formData, setFormData] = useState({
@@ -166,6 +166,8 @@ function EditCurso({ curso, users }) {
     setFormData({ ...formData, [text]: data.value });
   };
 
+  const url = diplomaturas ? "/admin/diplomaturas" : "/admin/cursos";
+
   //evento Edit
   const handleEdit = (text) => (e) => {
     setOpen(false);
@@ -187,7 +189,7 @@ function EditCurso({ curso, users }) {
       .then((res) => {
         toast.success("Curso editado exitosamente");
         setTimeout(function () {
-          window.location.href = "/admin/cursos";
+          window.location.href = { url };
         }, 2500);
       })
       .catch((err) => {
@@ -377,7 +379,11 @@ function CursosAdmin({ diplomaturas }) {
                       <Item.Extra>
                         <Button.Group floated="right">
                           <VerCurso curso={curso} users={users} />
-                          <EditCurso curso={curso} users={users} />
+                          <EditCurso
+                            curso={curso}
+                            users={users}
+                            diplomaturas={diplomaturas}
+                          />
                           <DeleteCurso curso={curso} />
                         </Button.Group>
 
