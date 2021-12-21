@@ -189,7 +189,7 @@ function EditCurso({ curso, users, diplomaturas }) {
       .then((res) => {
         toast.success("Curso editado exitosamente");
         setTimeout(function () {
-          window.location.href = { url };
+          window.location.href = url;
         }, 2500);
       })
       .catch((err) => {

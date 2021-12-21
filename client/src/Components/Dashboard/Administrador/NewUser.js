@@ -26,6 +26,10 @@ function NewUser() {
     setFormData({ ...formData, [text]: e.target.value });
   };
 
+  const handleRoleChange = (text) => (e, data) => {
+    setFormData({ ...formData, role: data.value });
+  };
+
   //submit data to backend
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -125,7 +129,7 @@ function NewUser() {
                 label="Rol"
                 placeholder="Usuario"
                 options={options}
-                onChange={handleChange("role")}
+                onChange={handleRoleChange("role")}
                 value={role}
               />
               <Button color="teal" fluid size="large">
