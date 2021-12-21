@@ -9,7 +9,6 @@ import {
   Form,
   Grid,
   Header,
-  Icon,
   Image,
   Label,
   Message,
@@ -19,6 +18,8 @@ import {
 } from "semantic-ui-react";
 import EditPerfil from "./EditPerfil";
 import EditPassword from "./EditPassword";
+
+import ImagenUser from "../../../Assets/user.png";
 
 function Perfil() {
   // checkboxs
@@ -194,6 +195,7 @@ function Perfil() {
   //Carga de Datos
   useEffect(() => {
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadData = () => {
@@ -304,11 +306,7 @@ function Perfil() {
 
           <Grid stackable>
             <Grid.Column width={3}>
-              <Image
-                size="medium"
-                circular
-                src="https://react.semantic-ui.com/images/wireframe/square-image.png"
-              ></Image>
+              <Image size="medium" circular src={ImagenUser}></Image>
             </Grid.Column>
             <Grid.Column width={9} verticalAlign="middle">
               <Header>

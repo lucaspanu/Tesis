@@ -236,7 +236,7 @@ const Cuotas = ({ cuotas, cursoSeleccionado }) => {
                 <Table.Cell>{`$ ${cuota.monto}`}</Table.Cell>
                 <Table.Cell>{cuota.nro_transaccion}</Table.Cell>
                 <Table.Cell>{cuota.nro_cuota}</Table.Cell>
-                <Table.Cell>{`$ ${cuota.intereses}`}</Table.Cell>
+                <Table.Cell>{`$ ${cuota.intereses || 0}`}</Table.Cell>
               </Table.Row>
             ))
           ) : (

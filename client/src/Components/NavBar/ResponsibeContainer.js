@@ -1,7 +1,7 @@
 import { createMedia } from "@artsy/fresnel";
 import PropTypes from "prop-types";
 import React, { Component, Fragment } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { isAuth, signout } from "../../helpers/auth";
 import {
@@ -9,14 +9,11 @@ import {
   Container,
   Dropdown,
   Icon,
-  Image,
   Menu,
   Segment,
   Sidebar,
   Visibility,
 } from "semantic-ui-react";
-
-import ImagenUser from "../../Assets/user.png";
 
 const { MediaContextProvider, Media } = createMedia({
   breakpoints: {
