@@ -456,8 +456,8 @@ function AddCuota({ userId, cursoId, userName, cursoTitle }) {
             ...formCuotasData,
             fecha: null,
             monto: null,
-            nro_transaccion: nro_transaccion + 1,
-            nro_cuota: nro_cuota + 1,
+            nro_transaccion: null,
+            nro_cuota: null,
             intereses: null,
           });
         })

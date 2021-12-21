@@ -23,8 +23,6 @@ import ImagenUser from "../../../Assets/user.png";
 
 function Perfil() {
   // checkboxs
-  const [value, setValue] = useState("");
-
   const id = isAuth()._id;
 
   // Perfil
@@ -89,6 +87,7 @@ function Perfil() {
   const handleChange = (text) => (e) => {
     setFormData({ ...formData, [text]: e.target.value });
   };
+  const [value, setValue] = useState(tipo_actividad_docente);
 
   //submit data to backend
   const handleSubmit = (e) => {
@@ -121,7 +120,7 @@ function Perfil() {
           institucion,
           titulo,
           estudio_posgrado,
-          tipo_actividad_docente,
+          tipo_actividad_docente: value,
           facultad,
           materia,
           imagen_actividad_docente,
@@ -174,7 +173,7 @@ function Perfil() {
         institucion,
         titulo,
         estudio_posgrado,
-        tipo_actividad_docente,
+        tipo_actividad_docente: value,
         facultad,
         materia,
         imagen_actividad_docente,
